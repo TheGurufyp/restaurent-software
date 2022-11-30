@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import axios from "axios"
-import { Box, Heading, Input,Text,Select, HStack, Button  } from '@chakra-ui/react';
+import { Box, Heading, Input,Text,Select, HStack, Button ,Flex } from '@chakra-ui/react';
 import Sizes from '../Components/Sizes';
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 
@@ -40,15 +40,15 @@ const additem=()=>{
 
   return (
    <>
-   
-   <Heading mb="50px" mt="40px" textAlign={"center"} >Add Menu item</Heading>
+   <Flex  mx="auto" maxW="1500px" direction={"column"} align="center" >
+   <Heading  mb="50px" mt="40px" textAlign={"center"} >Add Menu item</Heading>
   
 <Box mx="auto" w="500px">
 
 <Input placeholder='Enter Name'/>
-<Text mt="20px">Select Sizes</Text>
+<Text fontSize={"1.2rem"} fontWeight={"semibold"} mt="20px">Select Sizes</Text>
 
-<Select mb="30px" placeholder='Select option' onChange={handlechange}>
+{/* <Select mb="30px" placeholder='Select option' onChange={handlechange}>
   <option value='1'>1</option>
   <option value='2'>2</option>
   <option value='3'>3</option>
@@ -56,7 +56,7 @@ const additem=()=>{
   <option value='5'>5</option>
   <option value='6'>6</option>
 
-</Select>
+</Select> */}
 
 
 <Formik
@@ -135,7 +135,7 @@ const additem=()=>{
               </div>
             )}
           </FieldArray>
-          <Button mt="10px" colorScheme={"blue"} type='submit'>Add Item</Button>
+          <Button  mt="10px" colorScheme={"blue"} type='submit'>Add Item</Button>
 
         </Form>
       )}
@@ -160,7 +160,7 @@ return(
 
 
 </Box>
-
+</Flex>
    </>
   )
 }
