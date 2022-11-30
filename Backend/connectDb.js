@@ -1,7 +1,7 @@
 const mongoose=require('mongoose')
 // const { default: handler } = require('../pages/api/addmenuitem')
 
-const connectDb=async (handler)=>{
+const connectDb= handler=> async (req,res)=>{
 
 if(mongoose.connections[0].readyState)
 {

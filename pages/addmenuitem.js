@@ -151,21 +151,21 @@ export default Addmenuitem;
 
 
 
-// export async function getServerSideProps(context) {
+export async function getServerSideProps(context) {
 
-//     try {
-//       const res=await axios.post("http://localhost:3000/api/addmenuitem");
-//       const data=res.data;
-//       return {
-//         props: {data}, 
-//       }
+    try {
+      const res=await axios.post("http://localhost:3000/api/addmenuitem");
+      const data=res.data;
+      return {
+        props: {data}, 
+      }
       
-//     } 
-//     catch (error) {
+    } 
+    catch (error) {
       
-//     return {
-//       notFound: true,
-//     }
-//     }
+    return {
+      notFound: true,
+    }
+    }
   
-//   }
+  }
