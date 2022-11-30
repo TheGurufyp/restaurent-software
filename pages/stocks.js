@@ -114,22 +114,23 @@ const [newQuantity, setnewQuantity] = useState(0)
 
 export default Stocks;
 
-export async function getServerSideProps(context) {
-  const postData = async () => {
-  
-    const response = await fetch("/api/hello", {
-      method: "POST"
-    });
-    return response.json();
-  };
-  postData().then((data) => {
-    alert(data);
-  });
-// const res=await axios.get("/api/hello");
-// console.log(res);
+// export async function getServerSideProps(context) {
 
-  return {
-    props: {}, 
-  }
-}
+//   try {
+//     const res=await axios.post("http://localhost:3000/api/addmenuitem");
+//     const data=res.data;
+//     console.log(data)
+//     return {
+//       props: {data}, 
+//     }
+    
+//   } 
+//   catch (error) {
+    
+//   return {
+//     notFound: true,
+//   }
+//   }
+
+// }
 
