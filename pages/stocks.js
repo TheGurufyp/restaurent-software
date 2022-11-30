@@ -10,24 +10,29 @@ import { Box, Heading, Table,
     Button,
     Text,
     HStack,
-    Input, } from '@chakra-ui/react'
+    Input,IconButton  } from '@chakra-ui/react'
 import React, { useState } from 'react'
-
+import { CheckIcon } from '@chakra-ui/icons'
 function Stocks() {
-
+  
 const [newQuantity, setnewQuantity] = useState(0)
+const [showinput, setshowinput] = useState(false)
 
-const handlechange=(e)=>{
- 
-  if(e.target.value[0]==='0')
-{
-  e.target.value=e.target.value.slice(1);
-  console.log(e.target.value)
+const handleclick=()=>{
+
+  setshowinput(true);
+
+
 }
-  if(e.target.value=== '')
-  {setnewQuantity(0);}
-  else
- { setnewQuantity(parseInt(e.target.value))}
+
+const handleclickoutside=(e)=>{
+
+  let value=document.getElementById("inputfield").value;
+  if(value==='')
+  {value=0}
+  setnewQuantity(parseInt(value)); 
+  setshowinput(false); 
+
 }
 
 const handlePlus=()=>{
@@ -44,7 +49,7 @@ const handleMinus=()=>{
     <>
     <Box mt="20px" maxW={"1500px"} mx="auto" px="20px">
     <Heading mb="20px" textAlign={"center"} position="relative">Stocks
-    <Button colorScheme={"blue"} position={"absolute"} right="10px">Save</Button>
+    <Button colorScheme={"blue"} position={"absolute"} right="10px" bottom={"0px"}>Save All</Button>
     </Heading>
     
    
@@ -55,7 +60,8 @@ const handleMinus=()=>{
       <Tr>
         <Th>Item Name</Th>
         <Th textAlign={"center"}>Current Quantity</Th>
-        <Th isNumeric>Actions</Th>
+        <Th textAlign={"center"}>Actions</Th>
+        <Th isNumeric pr="35px">Save</Th>
       </Tr>
     </Thead>
     <Tbody>
@@ -63,17 +69,31 @@ const handleMinus=()=>{
         <Td>Chicken </Td>
         <Td textAlign={"center"}>20</Td>
         <Td  >
-         <HStack  justify="end" spacing={4}>
+         <HStack  justify="center" spacing={4}>
 
-         <Button size={"sm"} colorScheme="green" onClick={()=>{handleMinus()}}>-</Button>
-         {/* <Text  display={"inline-block"}>{newQuantity}</Text> */}
+        
 
-         <Input  w="50px" size={"sm"} borderColor="black" _hover={{borderColor:"black"}} type={"number"} fontWeight={"semibold"} value={newQuantity} onChange={(e)=>{handlechange(e)}} />
+{/* <input type="number" onChange={(e)=>{console.log(e.target.value)}} /> */}
+        { 
+        showinput?
+        <>
+         <Input  w="60px" size={"sm"} borderColor="black" _hover={{borderColor:"black"}} type="number" fontWeight={"semibold"} id="inputfield"  /> 
+         <IconButton onClick={(e)=>{ handleclickoutside(e)}} 
+          colorScheme={"green"} size='sm' icon={<CheckIcon />} />
+         </>
+         :
+         <>
+          <Button size={"sm"} colorScheme="green" onClick={()=>{handleMinus()}}>-</Button>
+        <Text onClick={handleclick} display={"inline-block"}>{newQuantity}</Text>
+        <Button size={"sm"} colorScheme="red"  onClick={()=>{handlePlus()}}>+</Button>
+        </>
+         }
 
-         <Button size={"sm"} colorScheme="red"  onClick={()=>{handlePlus()}}>+</Button>
+       
 
          </HStack>
           </Td>
+          <Td isNumeric > <Button size={"sm"} colorScheme={"blue"}>Save</Button></Td>
       </Tr>
       
     </Tbody>
