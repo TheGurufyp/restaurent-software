@@ -7,16 +7,35 @@ import {
   Input,
   Select,
   InputGroup,
+  Divider,
+  ButtonGroup,
+  Button,
+  Image,
+  Text,
+  Highlight,
+  useDisclosure,
   InputLeftElement,
 } from "@chakra-ui/react";
+import Model from "../Components/Model";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+} from "@chakra-ui/react";
 import { PhoneIcon, Search2Icon } from "@chakra-ui/icons";
+import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
 export default function Home() {
   return (
     <>
       <Box>
         <Center my={"1rem"}>
-          <Heading size={"xl"}>Menu</Heading>
+          <Heading size={"xl"}>Categorys</Heading>
         </Center>
         <Flex justify="center" align={"center"}>
           <Box width={"25%"}>
@@ -49,6 +68,19 @@ export default function Home() {
             </Select>
           </Box>
         </Flex>
+
+        <Model>
+          <Flex
+            justify="center"
+            align={"center"}
+            fontWeight={"semibold"}
+            fontSize="2rem"
+            w={"100px"}
+            height={"200px"}
+          >
+            Pizza
+          </Flex>
+        </Model>
       </Box>
     </>
   );
