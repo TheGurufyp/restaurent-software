@@ -1,22 +1,28 @@
 import React,{useState} from 'react'
 import { Box, Heading, Input,Text,Select, HStack  } from '@chakra-ui/react';
-function Sizes({id,setsizes}) {
+import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 
+
+function Sizes({id,setsizes}) {
+  
     const [size, setsize] = useState();
 
-    const handlechange=(e)=>{
-        if(e.target.value==='') return ;
+//     const handlechange=(e)=>{
+//         if(e.target.value==='') return ;
         
-// console.log(id)
-//         console.log(e.target.value)
+// // console.log(id)
+// //         console.log(e.target.value)
 
-let temp={
-   size:e.target.value
-}
+// let temp={
+//    size:e.target.value
+// }
 
-setsize(temp);
+// setsize(temp);
 
-    }
+//     }
+
+
+
 
 
   return (
