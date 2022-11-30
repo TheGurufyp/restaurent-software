@@ -13,37 +13,40 @@ import { Box, Heading, Table,
     Input,IconButton  } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { CheckIcon } from '@chakra-ui/icons'
+import Actions from '../Components/Actions'
+import axios from "axios"
+
 function Stocks() {
   
 const [newQuantity, setnewQuantity] = useState(0)
-const [showinput, setshowinput] = useState(false)
+// const [showinput, setshowinput] = useState(false)
 
-const handleclick=()=>{
+// const handleclick=()=>{
 
-  setshowinput(true);
+//   setshowinput(true);
 
 
-}
+// }
 
-const handleclickoutside=(e)=>{
+// const handleclickoutside=(e)=>{
 
-  let value=document.getElementById("inputfield").value;
-  if(value==='')
-  {value=0}
-  setnewQuantity(parseInt(value)); 
-  setshowinput(false); 
+//   let value=document.getElementById("inputfield").value;
+//   if(value==='')
+//   {value=0}
+//   setnewQuantity(parseInt(value)); 
+//   setshowinput(false); 
 
-}
+// }
 
-const handlePlus=()=>{
+// const handlePlus=()=>{
 
-  setnewQuantity(newQuantity+1);
-}
+//   setnewQuantity(newQuantity+1);
+// }
 
-const handleMinus=()=>{
+// const handleMinus=()=>{
 
-  setnewQuantity(newQuantity-1)
-}
+//   setnewQuantity(newQuantity-1)
+// }
 
   return (
     <>
@@ -69,11 +72,10 @@ const handleMinus=()=>{
         <Td>Chicken </Td>
         <Td textAlign={"center"}>20</Td>
         <Td  >
-         <HStack  justify="center" spacing={4}>
+          <Actions newQuantity={newQuantity} setnewQuantity={setnewQuantity}/>
+         {/* <HStack  justify="center" spacing={4}>
 
         
-
-{/* <input type="number" onChange={(e)=>{console.log(e.target.value)}} /> */}
         { 
         showinput?
         <>
@@ -91,7 +93,7 @@ const handleMinus=()=>{
 
        
 
-         </HStack>
+         </HStack> */}
           </Td>
           <Td isNumeric > <Button size={"sm"} colorScheme={"blue"}>Save</Button></Td>
       </Tr>
@@ -110,4 +112,24 @@ const handleMinus=()=>{
   )
 }
 
-export default Stocks
+export default Stocks;
+
+export async function getServerSideProps(context) {
+  const postData = async () => {
+  
+    const response = await fetch("/api/hello", {
+      method: "POST"
+    });
+    return response.json();
+  };
+  postData().then((data) => {
+    alert(data);
+  });
+// const res=await axios.get("/api/hello");
+// console.log(res);
+
+  return {
+    props: {}, 
+  }
+}
+
