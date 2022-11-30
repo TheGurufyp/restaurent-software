@@ -17,8 +17,8 @@ const Model = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Box>
-        <Button onClick={onOpen} as="span">
+      <Box bg={"blue"}>
+        <Button onClick={onOpen} as="span" w={"200px"} height={"200px"}>
           {children}
         </Button>
         <Modal isOpen={isOpen} onClose={onClose}>

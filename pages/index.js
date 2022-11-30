@@ -75,8 +75,6 @@ export default function Home() {
             align={"center"}
             fontWeight={"semibold"}
             fontSize="2rem"
-            w={"100px"}
-            height={"200px"}
           >
             Pizza
           </Flex>
