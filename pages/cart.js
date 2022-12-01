@@ -172,8 +172,8 @@ const cart = () => {
                   // justifyContent={"center"}
                   flexDirection={"column"}
                   justifyContent="center"
-                  marginInline={"auto"}
-                  // alignContent="auto"
+                  // marginInline={"auto"}
+                  alignContent="auto"
                   alignItems="center"
                   // border="1px"
                 >
@@ -184,139 +184,208 @@ const cart = () => {
                     justify="space-between "
                     align="center"
                     direction={"column"}
+                    marginInline="auto"
+                    ref={componentRef}
                   >
-                    <Center
-                      fontWeight={"semibold"}
-                      bg={"red.200"}
-                      width="60%"
-                      marginInline={"auto"}
-                      borderRadius="8px"
-                    >
-                      For Customer
-                    </Center>
                     <Flex
                       border={"1px"}
-                      borderColor="gray"
+                      borderColor="gray.500"
                       direction="column"
                       width={"70%"}
                       my="1rem"
                       // justify={"center"}
                       // align="center"
                       marginInline={"auto"}
-                      ref={componentRef}
                       // height="380px"
                     >
-                      <Center>Wakhraa Sawaad</Center>
+                      <Center border={"1px"}>Wakhraa Sawaad</Center>
                       <Flex
                         // border={"1px"}
                         justify="space-between"
                         my={"1rem"}
+                        w="100%"
                       >
                         <Box ml={"1rem"}>Invoice # 1</Box>
                         <Box mr={"1rem"}>Date : 16-Nov-2022</Box>
                       </Flex>
-                      <Box>
-                        <TableContainer>
-                          <Table variant="simple" size="sm">
-                            <TableCaption>Thanks For Order</TableCaption>
-                            <Thead>
-                              <Tr>
-                                <Th>Item</Th>
-                                <Th>price</Th>
-                                <Th>QTY</Th>
-                                <Th>Total</Th>
-                              </Tr>
-                            </Thead>
-                            <Tbody>
-                              <Tr>
-                                <Td>Chicken Tikka Pizza</Td>
-                                <Td>100</Td>
-                                <Td>2</Td>
-                                <Td>200</Td>
-                              </Tr>
-
-                              <Tr>
-                                <Td>Sajji</Td>
-                                <Td>50</Td>
-                                <Td>Half</Td>
-                                <Td>250</Td>
-                              </Tr>
-                            </Tbody>
-                            <Tfoot>
-                              <Tr>
-                                <Th></Th>
-                                <Th></Th>
-                                <Th>Total :</Th>
-                                <Th>Rs 2040</Th>
-                              </Tr>
-                            </Tfoot>
-                          </Table>
-                        </TableContainer>
-                      </Box>
+                      <Flex
+                        border={"1px"}
+                        // width="420px"
+                        width="100%"
+                        justify={"space-around"}
+                      >
+                        <Box
+                          // border={"1px"}
+                          fontWeight="semibold"
+                          width="30%"
+                        >
+                          Items
+                        </Box>
+                        <Box
+                          // border={"1px"}
+                          fontWeight="semibold"
+                          width={"10%"}
+                        >
+                          Price
+                        </Box>
+                        <Box
+                          // border={"1px"}
+                          fontWeight="semibold"
+                          width={"10%"}
+                        >
+                          Qt
+                        </Box>
+                        <Box
+                          // border={"1px"}
+                          fontWeight="semibold"
+                          width={"20%"}
+                        >
+                          Total Price
+                        </Box>
+                      </Flex>
+                      <Flex
+                        border={"1px"}
+                        // width="420px"
+                        width="100%"
+                        justify={"space-around"}
+                      >
+                        <Box width="30%">
+                          <Text>
+                            Chicken Pizza , Vegitable pizza and 2 sauce
+                          </Text>
+                        </Box>
+                        <Box width={"10%"}>1500</Box>
+                        <Box width={"10%"}>1</Box>
+                        <Box width={"20%"}>1500</Box>
+                      </Flex>
+                      <Flex
+                        border={"1px"}
+                        // width="420px"
+                        width="100%"
+                        justify={"space-around"}
+                      >
+                        <Box width="30%">
+                          <Text>Sajji</Text>
+                        </Box>
+                        <Box width={"10%"}>1500</Box>
+                        <Box width={"10%"}>10</Box>
+                        <Box width={"20%"}>15000</Box>
+                      </Flex>
+                      <Flex
+                        border={"1px"}
+                        // width="420px"
+                        width="100%"
+                        justify={"space-around"}
+                      >
+                        <Box width="30%">
+                          <Text>Chicken Pizza </Text>
+                        </Box>
+                        <Box width={"10%"}>1500</Box>
+                        <Box width={"10%"}>3</Box>
+                        <Box width={"20%"}>2900</Box>
+                      </Flex>
+                      <Flex
+                        border={"1px"}
+                        // width="420px"
+                        width="100%"
+                        justify={"space-around"}
+                      >
+                        <Box width="30%">
+                          <Text></Text>
+                        </Box>
+                        <Box width={"5%"}></Box>
+                        <Box width={"20%"} fontWeight="semibold">
+                          Total Price :
+                        </Box>
+                        <Box width={"20%"}>8500</Box>
+                      </Flex>
+                      <Center>
+                        <Text>Thanks For order</Text>
+                      </Center>
                     </Flex>
-                    <Center
-                      fontWeight={"semibold"}
-                      bg={"red.200"}
-                      width="60%"
-                      marginInline={"auto"}
-                      borderRadius="8px"
-                    >
-                      For Resturant
-                    </Center>
 
                     <Flex
+                      my="2rem"
                       border={"1px"}
+                      borderColor="gray.500"
                       direction="column"
                       width={"70%"}
-                      my="1rem"
-                      borderColor="gray"
-                      // ref={componentRef}
+                      // justify={"center"}
+                      // align="center"
+                      marginInline={"auto"}
+                      // height="380px"
                     >
-                      <Center>Wakhraa Sawaad</Center>
+                      <Center border={"1px"}>Wakhraa Sawaad</Center>
                       <Flex
                         // border={"1px"}
                         justify="space-between"
                         my={"1rem"}
+                        w="100%"
                       >
                         <Box ml={"1rem"}>Invoice # 1</Box>
                         <Box mr={"1rem"}>Date : 16-Nov-2022</Box>
                       </Flex>
-                      <Box>
-                        <TableContainer>
-                          <Table variant="simple" size="sm">
-                            <TableCaption>Order List</TableCaption>
-                            <Thead>
-                              <Tr>
-                                <Th>Item</Th>
-                                <Th></Th>
-                                <Th></Th>
-                                <Th>QTY</Th>
-                              </Tr>
-                            </Thead>
-                            <Tbody>
-                              <Tr>
-                                <Td>Chicken Tikka Pizza</Td>
-                                <Td></Td>
-                                <Td></Td>
-                                <Td>2</Td>
-                              </Tr>
+                      <Flex
+                        border={"1px"}
+                        // width="420px"
+                        width="100%"
+                        justify={"space-around"}
+                      >
+                        <Box
+                          // border={"1px"}
+                          fontWeight="semibold"
+                          width="70%"
+                        >
+                          Items
+                        </Box>
 
-                              <Tr>
-                                <Td>Chicken vegita</Td>
-                                <Td></Td>
-                                <Td></Td>
-                                <Td>250</Td>
-                              </Tr>
-                            </Tbody>
-                          </Table>
-                        </TableContainer>
-                      </Box>
+                        <Box
+                          // border={"1px"}
+                          fontWeight="semibold"
+                          width={"20%"}
+                        >
+                          QT.
+                        </Box>
+                      </Flex>
+                      <Flex
+                        border={"1px"}
+                        // width="420px"
+                        width="100%"
+                        justify={"space-around"}
+                      >
+                        <Box width="70%">
+                          <Text>
+                            Chicken Pizza , Vegitable pizza and 2 sauce
+                          </Text>
+                        </Box>
+
+                        <Box width={"20%"}>2</Box>
+                      </Flex>
+                      <Flex
+                        border={"1px"}
+                        // width="420px"
+                        width="100%"
+                        justify={"space-around"}
+                      >
+                        <Box width="70%">
+                          <Text>Sajji</Text>
+                        </Box>
+
+                        <Box width={"20%"}>1</Box>
+                      </Flex>
+
+                      <Center>
+                        <Text>Order List</Text>
+                      </Center>
+                      <Center bg={"black"} color="white">
+                        Invoice
+                      </Center>
                     </Flex>
-                    <Button onClick={handlePrint} colorScheme="blue">
-                      {" "}
-                      Print{" "}
-                    </Button>
                   </Flex>
+                  <Button onClick={handlePrint} colorScheme="blue">
+                    {" "}
+                    Print{" "}
+                  </Button>
                 </ModalBody>
                 <ModalFooter>
                   <Button onClick={onClose}>Close</Button>
