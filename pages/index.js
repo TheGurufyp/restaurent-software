@@ -68,17 +68,29 @@ export default function Home() {
             </Select>
           </Box>
         </Flex>
+        <Flex my={"1rem"}>
+          <Model>
+            <Flex
+              justify="center"
+              align={"center"}
+              fontWeight={"semibold"}
+              fontSize="2rem"
+            >
+              Pizza
+            </Flex>
+          </Model>
 
-        <Model>
-          <Flex
-            justify="center"
-            align={"center"}
-            fontWeight={"semibold"}
-            fontSize="2rem"
-          >
-            Pizza
-          </Flex>
-        </Model>
+          <Model>
+            <Flex
+              justify="center"
+              align={"center"}
+              fontWeight={"semibold"}
+              fontSize="2rem"
+            >
+              Pizza
+            </Flex>
+          </Model>
+        </Flex>
       </Box>
     </>
   );

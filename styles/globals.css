@@ -6,3 +6,15 @@ body {
 }
 
 
+.chakra-modal__content {
+  background-color: black;
+  /* border: 1px solid black; */
+  max-width: 60% !important;
+  /* height: 100%; */
+}
+.chakra-modal__body{
+  display: flex;
+  width: 20%;
+  /* flex: 1   */
+  /* border: 1px solid black; */
+}

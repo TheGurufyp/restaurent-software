@@ -70,7 +70,7 @@ function Actions({ newQuantity, setnewQuantity }) {
           <>
             <Button
               size={"sm"}
-              colorScheme="green"
+              colorScheme="red"
               onClick={() => {
                 handleMinus();
               }}
@@ -82,7 +82,7 @@ function Actions({ newQuantity, setnewQuantity }) {
             </Text>
             <Button
               size={"sm"}
-              colorScheme="red"
+              colorScheme="blue"
               onClick={() => {
                 handlePlus();
               }}
