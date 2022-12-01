@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
+import React, { useState,useRef } from 'react'
 import axios from "axios"
-import { Box, Heading, Input,Text,Select, HStack, Button ,Flex } from '@chakra-ui/react';
+import { Box, Heading, Input,Text,Select, HStack, Button ,Flex ,useToast } from '@chakra-ui/react';
 import Sizes from '../Components/Sizes';
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 
 
 function Addmenuitem() {
+  const reset=useRef();
+  const toast = useToast()
 
-const [sizes, setsizes] = useState([])
-const [count, setcount] = useState([])
 const initialValues = {
+  name:"",
+  category:"",
   friends: [
     {
       size: '',
@@ -17,26 +19,7 @@ const initialValues = {
     },
   ],
 };
-const handlechange=(e)=>{
-  if(e.target.value==='')
-  {
-    setcount();
-    return 
-  }
 
-let arr=[];
-
-for (let i = 0; i < parseInt(e.target.value); i++) {
-         arr.push( 0 )
-  
-}
-setcount(arr);
-
-}
-
-const additem=()=>{
-
-}
 
   return (
    <>
@@ -45,29 +28,43 @@ const additem=()=>{
   
 <Box mx="auto" w="500px">
 
-<Input placeholder='Enter Name'/>
-<Text fontSize={"1.2rem"} fontWeight={"semibold"} mt="20px">Select Sizes</Text>
-
-{/* <Select mb="30px" placeholder='Select option' onChange={handlechange}>
-  <option value='1'>1</option>
-  <option value='2'>2</option>
-  <option value='3'>3</option>
-  <option value='4'>4</option>
-  <option value='5'>5</option>
-  <option value='6'>6</option>
-
-</Select> */}
-
 
 <Formik
       initialValues={initialValues}
       onSubmit={async (values) => {
 
         try {
-          const res=await axios.post("http://localhost:3000/api/addmenuitem",{sizes:values.friends});
+          const res=await axios.post("http://localhost:3000/api/addmenuitem",{sizes:values.friends,name:values.name,category:values.category});
           console.log(res.data);
+          if(res.data.success){
+           
+            toast({
+              title: 'Item Added.',
+              status: 'success',
+              duration: 5000,
+              isClosable: true,
+              position: "top",
+            })
+            reset.current.click();
+          }
+          else{
+            toast({
+              title: 'something went wronge.',
+              status: 'error',
+              duration: 9000,
+              isClosable: true,
+              position: "top",
+            })
+          }
         } catch (error) {
-          console.log(error)
+          // console.log(error)
+          toast({
+            title: 'Network Error',
+            status: 'error',
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          })
         }
 
 
@@ -75,6 +72,16 @@ const additem=()=>{
     >
 {({ values }) => (
         <Form>
+          
+          <Field as={Input} id="name" name="name" placeholder="Enter Name" />
+          <Field mt="20px" as={Select} name="category" placeholder='Select Category'>
+             <option value="Pizza">Pizza</option>
+             <option value="BBQ">BBQ</option>
+             <option value="Pasta">Pasta</option>
+           </Field>
+
+<Text fontSize={"1.2rem"} fontWeight={"semibold"} mt="20px">Select Sizes</Text>
+
           <FieldArray name="friends">
             {({ insert, remove, push }) => (
               <div>
@@ -82,15 +89,20 @@ const additem=()=>{
                   values.friends.map((friend, index) => (
                     <div className="row" key={index}>
                       <div className="col">
-                        <label htmlFor={`friends.${index}.size`}>Size</label>
-                        <Field as={Input}
+                        {/* <label htmlFor={`friends.${index}.size`}>Size</label> */}
+                        {/* <Field as={Input}
                           name={`friends.${index}.size`}
                           placeholder="Enter size"
                           type="text"
-                        />
-                        {/* <Input  name={`friends.${index}.size`}
-                          placeholder="Enter size"
-                          type="text"/> */}
+                        /> */}
+                         <Field mt="10px" as={Select} name={`friends.${index}.size`}placeholder='Select Size'>
+                         <option value="N">N</option>
+             <option value="S">S</option>
+             <option value="M">M</option>
+             <option value="L">L</option>
+             <option value="XL">XL</option>
+           </Field>
+                        
                         <ErrorMessage
                           name={`friends.${index}.size`}
                           component="div"
@@ -104,9 +116,7 @@ const additem=()=>{
                           placeholder="Enter price"
                           type="number"
                         />
-                        {/* <Input  name={`friends.${index}.price`}
-                          placeholder="Enter price"
-                          type="number"/> */}
+                      
                         <ErrorMessage
                           name={`friends.${index}.price`}
                           component="div"
@@ -136,6 +146,7 @@ const additem=()=>{
             )}
           </FieldArray>
           <Button  mt="10px" colorScheme={"blue"} type='submit'>Add Item</Button>
+          <Button ref={reset} display="none"  type='reset'>Reset</Button>
 
         </Form>
       )}
@@ -146,17 +157,6 @@ const additem=()=>{
 
     </Formik>
 
-
-
-{/* {
-  count?.map((d,i)=>{
-return(
-<Box key={i} mt="10px">
- <Sizes id={i} setsizes={setsizes}/>
-</Box>
-)
-  })
-} */}
 
 
 </Box>

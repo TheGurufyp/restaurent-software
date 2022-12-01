@@ -6,10 +6,11 @@ const handler=async (req,res)=>{
 
   if (req.method === 'POST') {
    
-    const {sizes}=req.body;
+    const {sizes,name,category}=req.body;
     
     const newitem= new Menuitem({
-      name:"pizza",
+      name:name,
+      category:category,
       sizes:sizes
     })
     await newitem.save();
@@ -17,7 +18,7 @@ const handler=async (req,res)=>{
     res.send({success:true})
   
     } else {
-      res.status(200).json({ name: 'get' })
+      res.send({success:false})
     }
 
 
