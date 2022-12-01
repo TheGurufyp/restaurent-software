@@ -16,6 +16,7 @@ import {
   useDisclosure,
   InputLeftElement,
 } from "@chakra-ui/react";
+import Cart from "../Components/Cart";
 import Model from "../Components/Model";
 import {
   Modal,
@@ -24,93 +25,82 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  ModalCloseButton,useToast 
+  ModalCloseButton,
+  useToast,
 } from "@chakra-ui/react";
 import { PhoneIcon, Search2Icon } from "@chakra-ui/icons";
 
 import { useEffect, useState } from "react";
-import axios from "axios"
+import axios from "axios";
 
 export default function Home() {
-  const toast = useToast()
-const [items, setitems] = useState([]);
-const [categories, setcategories] = useState()
+  const toast = useToast();
+  const [items, setitems] = useState([]);
+  const [categories, setcategories] = useState();
 
-
-const fetchcategories=async()=>{
-  try {
-    const res=await  axios.get("http://localhost:3000/api/getCategories");
-    if( res.data.success)
-    {
-      // console.log( res.data.payload);
-      setcategories(res.data.payload);
-     
-    }
-    else{
-      // console.log( res.data.payload);
+  const fetchcategories = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api/getCategories");
+      if (res.data.success) {
+        // console.log( res.data.payload);
+        setcategories(res.data.payload);
+      } else {
+        // console.log( res.data.payload);
+        toast({
+          title: "Something went wronge",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    } catch (error) {
+      // console.log(error);
       toast({
-        title: 'Something went wronge',
-        status: 'error',
+        title: "Network error",
+        status: "error",
         duration: 5000,
         isClosable: true,
-      })
+      });
     }
-  } catch (error) {
-    // console.log(error);
-    toast({
-      title: 'Network error',
-      status: 'error',
-      duration: 5000,
-      isClosable: true,
-    })
-  }
+  };
 
-}
+  useEffect(() => {
+    const fetchitems = async () => {
+      try {
+        const res = await axios.get("http://localhost:3000/api/getmenuitems");
+        if (res.data.success) {
+          // console.log( res.data.payload);
+          setitems(res.data.payload);
+          toast({
+            title: "Software is Ready to use",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
+        } else {
+          // console.log( res.data.payload);
+          toast({
+            title: "Something went wronge",
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          });
+        }
+      } catch (error) {
+        // console.log(error);
+        toast({
+          title: "Network error",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      }
+    };
 
-
-useEffect(() => {
-  
-const fetchitems=async()=>{
-try {
-  const res=await  axios.get("http://localhost:3000/api/getmenuitems");
-  if( res.data.success)
-  {
-    // console.log( res.data.payload);
-    setitems(res.data.payload);
-    toast({
-      title: 'Software is Ready to use',
-      status: 'success',
-      duration: 5000,
-      isClosable: true,
-      position:"top"
-    })
-  }
-  else{
-    // console.log( res.data.payload);
-    toast({
-      title: 'Something went wronge',
-      status: 'error',
-      duration: 5000,
-      isClosable: true,
-    })
-  }
-} catch (error) {
-  // console.log(error);
-  toast({
-    title: 'Network error',
-    status: 'error',
-    duration: 5000,
-    isClosable: true,
-  })
-}
-}
-
-fetchitems();
-fetchcategories();
-
-}, [])
-
-
+    fetchitems();
+    fetchcategories();
+  }, []);
 
   return (
     <>
@@ -149,33 +139,48 @@ fetchcategories();
             </Select>
           </Box>
         </Flex>
-        <Flex my={"1rem"}>
-          {
-            categories?.map((c,i)=>{
-                return (
-                  <Model key={c.name} items={items} category={c.name}>
-                  <Flex 
-                    justify="center"
-                    align={"center"}
+        <Flex
+          my={"2rem"}
+          // wrap="wrap"
+          // direction={"row"}
+          justify="space-between"
+          // align={"center"}
+          // w="100%"
+          // border={"1px"}
+        >
+          <Flex
+            wrap={"wrap"}
+            justify="space-evenly"
+            width={"48%"}
+            border="1px"
+            borderColor={"gray.300"}
+            borderRadius="8px"
+            p={"1rem"}
+          >
+            {categories?.map((c, i) => {
+              return (
+                <Model key={c.name} items={items} category={c.name}>
+                  <Flex
+                    // justify="center"
+                    // align={"center"}
+                    // direction="row"
                     fontWeight={"semibold"}
                     fontSize="2rem"
                   >
-                   {c.name}
+                    {c.name}
                   </Flex>
                 </Model>
-                )
-            })
-          }
-         
-
-        
+              );
+            })}
+          </Flex>
+          <Box
+            width={"50%"}
+            //  border="1px"
+          >
+            <Cart />
+          </Box>
         </Flex>
       </Box>
     </>
   );
-
-
-
-
-
 }

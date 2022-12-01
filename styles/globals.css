@@ -18,3 +18,15 @@ body {
   /* flex: 1   */
   /* border: 1px solid black; */
 }
+.H-1 {
+  font-size: 13px;
+}
+.H-2{
+  font-size: 12px;
+}
+.H-3{
+  font-size: 11px;
+}
+.H-4{
+  font-size: 10px;
+}

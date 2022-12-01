@@ -22,7 +22,7 @@ import {
   TableCaption,
   TableContainer,
 } from "@chakra-ui/react";
-import Product from "../Components/Product";
+import Product from "./Product";
 import {
   Modal,
   ModalOverlay,
@@ -46,10 +46,10 @@ const cart = () => {
         border={"1px"}
         borderColor="gray.200"
         borderRadius={"8px"}
-        width="50%"
+        // width="50%"
         marginInline={"auto"}
         direction="column"
-        my="0.5rem"
+        // my="0.5rem"
         p={"1rem"}
       >
         <Flex
@@ -198,15 +198,21 @@ const cart = () => {
                       marginInline={"auto"}
                       // height="380px"
                     >
-                      <Center border={"1px"}>Wakhraa Sawaad</Center>
+                      <Center border={"1px"} className="H-1">
+                        Wakhraa Sawaad
+                      </Center>
                       <Flex
                         // border={"1px"}
                         justify="space-between"
                         my={"1rem"}
                         w="100%"
                       >
-                        <Box ml={"1rem"}>Invoice # 1</Box>
-                        <Box mr={"1rem"}>Date : 16-Nov-2022</Box>
+                        <Box className="H-2" ml={"1rem"}>
+                          Invoice # 1
+                        </Box>
+                        <Box className="H-2" mr={"1rem"}>
+                          Date : 16-Nov-2022
+                        </Box>
                       </Flex>
                       <Flex
                         border={"1px"}
@@ -218,6 +224,7 @@ const cart = () => {
                           // border={"1px"}
                           fontWeight="semibold"
                           width="30%"
+                          className="H-3"
                         >
                           Items
                         </Box>
@@ -225,6 +232,7 @@ const cart = () => {
                           // border={"1px"}
                           fontWeight="semibold"
                           width={"10%"}
+                          className="H-3"
                         >
                           Price
                         </Box>
@@ -232,6 +240,7 @@ const cart = () => {
                           // border={"1px"}
                           fontWeight="semibold"
                           width={"10%"}
+                          className="H-3"
                         >
                           Qt
                         </Box>
@@ -239,6 +248,7 @@ const cart = () => {
                           // border={"1px"}
                           fontWeight="semibold"
                           width={"20%"}
+                          className="H-3"
                         >
                           Total Price
                         </Box>
@@ -250,13 +260,19 @@ const cart = () => {
                         justify={"space-around"}
                       >
                         <Box width="30%">
-                          <Text>
+                          <Text className="H-4">
                             Chicken Pizza , Vegitable pizza and 2 sauce
                           </Text>
                         </Box>
-                        <Box width={"10%"}>1500</Box>
-                        <Box width={"10%"}>1</Box>
-                        <Box width={"20%"}>1500</Box>
+                        <Box width={"10%"} className="H-4">
+                          1500
+                        </Box>
+                        <Box width={"10%"} className="H-4">
+                          1
+                        </Box>
+                        <Box width={"20%"} className="H-4">
+                          1500
+                        </Box>
                       </Flex>
                       <Flex
                         border={"1px"}
@@ -265,11 +281,17 @@ const cart = () => {
                         justify={"space-around"}
                       >
                         <Box width="30%">
-                          <Text>Sajji</Text>
+                          <Text className="H-4">Sajji</Text>
                         </Box>
-                        <Box width={"10%"}>1500</Box>
-                        <Box width={"10%"}>10</Box>
-                        <Box width={"20%"}>15000</Box>
+                        <Box width={"10%"} className="H-4">
+                          1500
+                        </Box>
+                        <Box width={"10%"} className="H-4">
+                          10
+                        </Box>
+                        <Box width={"20%"} className="H-4">
+                          15000
+                        </Box>
                       </Flex>
                       <Flex
                         border={"1px"}
@@ -278,11 +300,17 @@ const cart = () => {
                         justify={"space-around"}
                       >
                         <Box width="30%">
-                          <Text>Chicken Pizza </Text>
+                          <Text className="H-4">Chicken Pizza </Text>
                         </Box>
-                        <Box width={"10%"}>1500</Box>
-                        <Box width={"10%"}>3</Box>
-                        <Box width={"20%"}>2900</Box>
+                        <Box width={"10%"} className="H-4">
+                          1500
+                        </Box>
+                        <Box width={"10%"} className="H-4">
+                          3
+                        </Box>
+                        <Box width={"20%"} className="H-4">
+                          2900
+                        </Box>
                       </Flex>
                       <Flex
                         border={"1px"}
@@ -298,6 +326,21 @@ const cart = () => {
                           Total Price :
                         </Box>
                         <Box width={"20%"}>8500</Box>
+                      </Flex>
+                      <Flex
+                        border={"1px"}
+                        // width="420px"
+                        width="100%"
+                        justify={"space-around"}
+                      >
+                        <Box width="30%">
+                          <Text></Text>
+                        </Box>
+                        <Box width={"5%"}></Box>
+                        <Box width={"50%"} fontWeight="semibold">
+                          Price After Discount :
+                        </Box>
+                        <Box width={"25%"}>500</Box>
                       </Flex>
                       <Center>
                         <Text>Thanks For order</Text>
@@ -315,15 +358,21 @@ const cart = () => {
                       marginInline={"auto"}
                       // height="380px"
                     >
-                      <Center border={"1px"}>Wakhraa Sawaad</Center>
+                      <Center border={"1px"} className="H-1">
+                        Wakhraa Sawaad
+                      </Center>
                       <Flex
                         // border={"1px"}
                         justify="space-between"
                         my={"1rem"}
                         w="100%"
                       >
-                        <Box ml={"1rem"}>Invoice # 1</Box>
-                        <Box mr={"1rem"}>Date : 16-Nov-2022</Box>
+                        <Box className="H-2" ml={"1rem"}>
+                          Invoice # 1
+                        </Box>
+                        <Box className="H-2" mr={"1rem"}>
+                          Date : 16-Nov-2022
+                        </Box>
                       </Flex>
                       <Flex
                         border={"1px"}
@@ -335,6 +384,7 @@ const cart = () => {
                           // border={"1px"}
                           fontWeight="semibold"
                           width="70%"
+                          className="H-3"
                         >
                           Items
                         </Box>
@@ -343,6 +393,7 @@ const cart = () => {
                           // border={"1px"}
                           fontWeight="semibold"
                           width={"20%"}
+                          className="H-3"
                         >
                           QT.
                         </Box>
@@ -354,12 +405,14 @@ const cart = () => {
                         justify={"space-around"}
                       >
                         <Box width="70%">
-                          <Text>
+                          <Text className="H-4">
                             Chicken Pizza , Vegitable pizza and 2 sauce
                           </Text>
                         </Box>
 
-                        <Box width={"20%"}>2</Box>
+                        <Box width={"20%"} className="H-4">
+                          2
+                        </Box>
                       </Flex>
                       <Flex
                         border={"1px"}
