@@ -38,6 +38,10 @@ export default function Home() {
   const [items, setitems] = useState([]);
   const [categories, setcategories] = useState();
 
+ 
+ 
+  
+
   const fetchcategories = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/getCategories");
@@ -159,7 +163,7 @@ export default function Home() {
           >
             {categories?.map((c, i) => {
               return (
-                <Model key={c.name} items={items} category={c.name}>
+                <Model key={c.name} items={items} category={c.name}  >
                   <Flex
                     // justify="center"
                     // align={"center"}

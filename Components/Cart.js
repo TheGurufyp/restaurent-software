@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { useReactToPrint } from "react-to-print";
 import React, { useRef } from "react";
 import {
@@ -10,6 +10,7 @@ import {
   Button,
   Divider,
   Text,
+  HStack,
 } from "@chakra-ui/react";
 import {
   Table,
@@ -33,9 +34,13 @@ import {
   ModalCloseButton,
   useDisclosure,
 } from "@chakra-ui/react";
+import { CartContext } from "../context/cart"
+
 
 const cart = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const {cart,setcart,totalprice,priceAfterdiscount,discount, setdiscount,cartlength}=useContext(CartContext);
+
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -72,7 +77,7 @@ const cart = () => {
             fontWeight={"semibold"}
             fontSize="1.5rem"
           >
-            3 Items
+            {cartlength} Items
           </Box>
         </Flex>
         <Divider my={"1rem"} />
@@ -111,10 +116,12 @@ const cart = () => {
           </Box>
           <Box width={"5%"}></Box>
         </Flex>
-        <Product />
-        <Product />
-        <Product />
-        <Product />
+        {
+          cart?.map((item,i)=>{
+          return  <Product key={i} item={item} index={i}/>
+          })
+        }
+  
 
         <Divider my={"0.6rem"}></Divider>
 
@@ -133,24 +140,27 @@ const cart = () => {
           >
             <Flex>
               <Box fontWeight={"semibold"}>Total Price : </Box>
-              <Box mx={"1rem"}>800</Box>
+              <Box mx={"1rem"}>{totalprice}</Box>
             </Flex>
             <Divider my={"0.2rem"} width="40%"></Divider>
             <Flex my={"0.7rem"} justify={"left"} align="center">
               <Text colorScheme={"blue"} fontWeight="semibold">
                 Discount %{" "}
               </Text>
-              <Input mx="1rem" type={"number"} size="sm" width={"20%"}></Input>
+              <HStack spacing={0}>
+              <Input id="discount" mx="1rem" type={"number"} size="sm" width={"60px"}></Input>
+              <Button onClick={()=>setdiscount(document.getElementById("discount").value)} size={"sm"} colorScheme="blue">apply</Button>
+              </HStack>
             </Flex>
             <Divider my={"0.2rem"} width="55%"></Divider>
             <Flex>
               <Box fontWeight={"semibold"}>Total Price After Discount : </Box>
-              <Box mx={"1rem"}>800</Box>
+              <Box mx={"1rem"}>{priceAfterdiscount}</Box>
             </Flex>
           </Flex>
           <Flex justify={"right"} mr="2rem">
-            <Button onClick={onOpen} variant={"solid"} colorScheme="blue">
-              CHECKOUT
+            <Button onClick={onOpen} variant={"solid"} colorScheme="red">
+              Place Order
             </Button>
             <Modal onClose={onClose} isOpen={isOpen} size={"full"}>
               <ModalOverlay />
