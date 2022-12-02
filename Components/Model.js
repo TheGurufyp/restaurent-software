@@ -22,13 +22,14 @@ import {
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
 import Actions from "./Actions";
+import ItemCard from "./ItemCard";
 
 const Model = ({ children ,items,category}) => {
-  const [newQuantity, setnewQuantity] = useState(0);
+ 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [filteritems, setfilteritems] = useState([])
 
-
+  
   const filterbycategory=()=>{
  
     const filterresult= items.filter((item)=>{
@@ -38,6 +39,8 @@ const Model = ({ children ,items,category}) => {
    
      
   }
+
+
 
 
   return (
@@ -68,99 +71,11 @@ const Model = ({ children ,items,category}) => {
               {
                 filteritems?.map((item,i)=>{
                   return (
-                    <Card maxW="300px" key={i}>
-                    <CardBody>
-                      <Stack mt="6" spacing="3">
-                        <Heading size="md">{item.name}</Heading>
-  
-                        <Tabs variant="soft-rounded" colorScheme="blue">
-                          <TabList>
-                            {
-                              item?.sizes.map((s,i)=>{
-                                return (
-                                  <Tab key={i}>{s.size}</Tab>
-                                )
-                              })
-                            }
-                            
-                          </TabList>
-                          <TabPanels>
-                            {
-                              item?.sizes.map((s,i)=>{
-                                return (
-                                  <TabPanel key={i} color="blue.600" fontSize="2xl">
-                              <p>Rs {s.price}</p>
-                            </TabPanel>
-                                )
-                              })
-                            }
-                          
-                          </TabPanels>
-                        </Tabs>
-                      </Stack>
-                    </CardBody>
-                    <Divider />
-                    <CardFooter>
-                      <ButtonGroup spacing="2">
-                        <Box display={"flex"}>
-                          <Actions
-                            newQuantity={newQuantity}
-                            setnewQuantity={setnewQuantity}
-                          />
-                        </Box>
-                        <Button mx="1.2rem" variant="outline" colorScheme="blue">
-                          Add to cart
-                        </Button>
-                      </ButtonGroup>
-                    </CardFooter>
-                  </Card>
+                   <ItemCard key={i} item={item}/>
                   )
                 })
               }
-                {/* <Card maxW="300px">
-                  <CardBody>
-                    <Stack mt="6" spacing="3">
-                      <Heading size="md">Chicken Tikka</Heading>
-
-                      <Tabs variant="soft-rounded" colorScheme="blue">
-                        <TabList>
-                          <Tab>S</Tab>
-                          <Tab>M</Tab>
-                          <Tab>L</Tab>
-                          <Tab>XL</Tab>
-                        </TabList>
-                        <TabPanels>
-                          <TabPanel color="blue.600" fontSize="2xl">
-                            <p>Rs 380</p>
-                          </TabPanel>
-                          <TabPanel color="blue.600" fontSize="2xl">
-                            <p>Rs 700</p>
-                          </TabPanel>
-                          <TabPanel color="blue.600" fontSize="2xl">
-                            <p>Rs 1150</p>
-                          </TabPanel>
-                          <TabPanel color="blue.600" fontSize="2xl">
-                            <p>Rs 1580</p>
-                          </TabPanel>
-                        </TabPanels>
-                      </Tabs>
-                    </Stack>
-                  </CardBody>
-                  <Divider />
-                  <CardFooter>
-                    <ButtonGroup spacing="2">
-                      <Box display={"flex"}>
-                        <Actions
-                          newQuantity={newQuantity}
-                          setnewQuantity={setnewQuantity}
-                        />
-                      </Box>
-                      <Button mx="1.2rem" variant="outline" colorScheme="blue">
-                        Add to cart
-                      </Button>
-                    </ButtonGroup>
-                  </CardFooter>
-                </Card> */}
+               
                 
 
               </ModalBody>
