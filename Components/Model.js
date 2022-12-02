@@ -54,9 +54,12 @@ const Model = ({ children, items, category }) => {
           color={"white"}
           my="5px"
           fontSize={"1.5rem"}
-          // inlineSize="140px"
           overflowWrap="break-all"
-          // wordBreak={"break-all"}
+          cursor={"pointer"}
+          _hover={{
+            bg:"blue.600"
+          }}
+         
         >
       
           {`${children}`}
