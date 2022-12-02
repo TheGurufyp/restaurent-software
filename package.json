@@ -22,6 +22,7 @@
     "next": "13.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-id-generator": "^3.0.2",
     "react-to-print": "^2.14.10"
   }
 }

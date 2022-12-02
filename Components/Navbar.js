@@ -1,7 +1,12 @@
 import { Box,Flex } from '@chakra-ui/react'
-import React from 'react'
+import React,{useState} from 'react'
+import SideBar from "./Sidebar";
+import HamburgerSign from "./hamburgerSign";
 
 function Navbar() {
+
+  const [openSidebar, setopenSidebar] = useState(false)
+
   return (
     <>
     <Flex
@@ -12,6 +17,12 @@ function Navbar() {
       bg={"black"}
       p="0.5rem"
     >
+       <SideBar  setopenSidebar={setopenSidebar} openSidebar={openSidebar}/>
+       <Box ml="20px" position={"absolute"} left="0px" zIndex="2000" top={"25px"}>
+        <HamburgerSign setopenSidebar={setopenSidebar} openSidebar={openSidebar}/>
+      </Box>
+
+
       <Box
         // border={"1px"}
         color="orange"
@@ -19,17 +30,9 @@ function Navbar() {
         fontWeight="semibold"
         fontStyle={"italic"}
       >
-        Wakhra 
+        Wakhra Swaad
       </Box>
-      <Box
-        // border={"1px"}
-        fontWeight="medium"
-        color={"red.400"}
-        borderColor="white"
-        textDecoration="HighlightText"
-      >
-        Fast Food, B.B.Q, Sajji
-      </Box>
+     
     </Flex>
   </>
   )

@@ -1,14 +1,16 @@
-import React, { useState,useRef, useEffect } from 'react'
+import React, { useState,useRef, useEffect,useContext } from 'react'
 import axios from "axios"
 import { Box, Heading, Input,Text,Select, HStack, Button ,Flex ,useToast } from '@chakra-ui/react';
 import Sizes from '../Components/Sizes';
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
+import { MenuitemsContext } from "../context/Menuitems";
 
 
 function Addmenuitem() {
+  const {items,categories}=useContext(MenuitemsContext);
   const reset=useRef();
   const toast = useToast();
-  const [categories, setcategories] = useState([]);
+ 
 const initialValues = {
   name:"",
   category:"",
@@ -21,37 +23,7 @@ const initialValues = {
 };
 
 
-const fetchcategories = async () => {
-  try {
-    const res = await axios.get("http://localhost:3000/api/getCategories");
-    if (res.data.success) {
-      // console.log( res.data.payload);
-      setcategories( res.data.payload );
-    } else {
-      // console.log( res.data.payload);
-      toast({
-        title: "Something went wronge",
-        status: "error",
-        duration: 5000,
-        isClosable: true,
-      });
-    }
-  } catch (error) {
-    // console.log(error);
-    toast({
-      title: "Network error",
-      status: "error",
-      duration: 5000,
-      isClosable: true,
-    });
-  }
-};
 
-useEffect(() => {
-  
-fetchcategories();
- 
-}, [])
 
 
 
@@ -66,6 +38,32 @@ fetchcategories();
 <Formik
       initialValues={initialValues}
       onSubmit={async (values) => {
+      let fl=false;
+       if(!values.name || !values.category)
+       {
+          fl=true;
+        
+       }
+       for (let i = 0; i < values.friends.length; i++) {
+       
+        if(!values.friends[i].size || !values.friends[i].price )
+        {
+          fl=true;break;
+        }
+        
+       }
+
+
+       if(fl){
+        toast({
+          title: 'Fill all fields',
+          status: 'error',
+          duration: 5000,
+          isClosable: true,
+          position: "top",
+        })
+        return;
+       }
 
         try {
           const res=await axios.post("http://localhost:3000/api/addmenuitem",{sizes:values.friends,name:values.name,category:values.category});
@@ -112,7 +110,7 @@ fetchcategories();
             {
               categories?.map((c,i)=>{
                 return (
-                  <option value={c.name}>{c.name}</option>
+                  <option key={i} value={c.name}>{c.name}</option>
                 )
               })
             }

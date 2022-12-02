@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React, useEffect, useState,useCallback } from "react";
 
 import {
   Modal,
@@ -28,19 +28,27 @@ const Model = ({ children, items, category }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [filteritems, setfilteritems] = useState([]);
 
+
+useEffect(() => {
+ 
   const filterbycategory = () => {
+    
     const filterresult = items.filter((item) => {
       return item.category === category;
     });
     setfilteritems(filterresult);
-  };
+  }
+  filterbycategory();
+ 
+}, [])
 
+ 
   return (
     <>
       <Box>
         <Flex
           onClick={() => {
-            filterbycategory();
+            // filterbycategory();
             onOpen();
           }}
           align="center"

@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { CartContext } from "../context/cart";
 import { useReactToPrint } from "react-to-print";
-import React, { useRef, useContext } from "react";
+import React, { useRef, useContext, useState ,useEffect} from "react";
 import {
   Heading,
   Center,
@@ -20,10 +20,13 @@ import {
   Button,
   Divider,
   Text,
-  HStack,
+  HStack,useToast
 } from "@chakra-ui/react";
+import axios from "axios"
+import nextId from "react-id-generator";
 
 const Print = ({ children, item }) => {
+ 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -40,9 +43,70 @@ const Print = ({ children, item }) => {
     cartlength,
   } = useContext(CartContext);
 
+const [apiInProgress, setapiInProgress] = useState(false);
+const [orderStatus, setorderStatus] = useState("");
+const [order_id, setorder_id] = useState()
+const [date, setdate] = useState()
+const toast = useToast();
+
+  const PlaceOrder=async()=>{
+    if(cartlength<1)return;
+    setapiInProgress(true);
+    try {
+      const id = nextId().slice(2);
+      setorder_id(id);
+
+      let d=new Date();
+      d=`${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}`;
+      setdate(d);
+
+      const res = await axios.post("http://localhost:3000/api/saveorder",{cart:item,order_id:id});
+     
+      if (res.data.success) {
+        setapiInProgress(false);
+        toast({
+          title: "Order Saved",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+          position:"top"
+        });
+        setorderStatus("Order Placed Successfully");
+        onOpen();
+
+      } 
+      else {
+        // console.log( res.data.payload);
+        setapiInProgress(false);
+        setorderStatus("Order not Saved");
+        onOpen();
+        toast({
+          title: "Order not Saved",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+          position:"top"
+        });
+      }
+    } catch (error) {
+      setorderStatus("Order not Saved");
+      onOpen();
+      setapiInProgress(false);
+      toast({
+        title: "Order not Saved",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position:"top"
+      });
+    }
+   
+  }
+
   return (
     <>
-      <Button onClick={onOpen} variant={"solid"} colorScheme="red">
+      <Button onClick={PlaceOrder} variant={"solid"} colorScheme="red" isLoading={apiInProgress}
+    loadingText='Loading' spinnerPlacement='end'>
         Place Order
       </Button>
       <Modal onClose={onClose} isOpen={isOpen} size={"sm"}>
@@ -51,11 +115,14 @@ const Print = ({ children, item }) => {
           <ModalHeader>
             <Center
               bg={"blue.400"}
-              width="30%"
+              width="50%"
               marginInline={"auto"}
               borderRadius="8px"
+              textAlign={"center"}
+              color="white"
+              py="8px"
             >
-              Invoice
+              {orderStatus}
             </Center>
           </ModalHeader>
           <ModalCloseButton />
@@ -70,6 +137,7 @@ const Print = ({ children, item }) => {
             alignItems="center"
             // border="1px"
           >
+          
             <Flex
               // border={"1px"}
               // flexDir="column"
@@ -80,6 +148,7 @@ const Print = ({ children, item }) => {
               marginInline="auto"
               ref={componentRef}
             >
+              
               <Flex
                 border={"1px"}
                 borderColor="gray.500"
@@ -101,10 +170,10 @@ const Print = ({ children, item }) => {
                   w="100%"
                 >
                   <Box className="H-2" ml={"1rem"}>
-                    Invoice # 1
+                    {`Order # ${order_id}`}
                   </Box>
                   <Box className="H-2" mr={"1rem"}>
-                    {Date()}
+                    Date: {date}
                   </Box>
                 </Flex>
                 <Flex
@@ -146,9 +215,9 @@ const Print = ({ children, item }) => {
                     Total Price
                   </Box>
                 </Flex>
-                {item.map((item) => {
+                {item.map((item,i) => {
                   return (
-                    <Flex
+                    <Flex key={i}
                       border={"1px"}
                       // width="420px"
                       width="100%"
@@ -247,10 +316,10 @@ const Print = ({ children, item }) => {
                   w="100%"
                 >
                   <Box className="H-2" ml={"1rem"}>
-                    Invoice # 1
+                  {`Order # ${order_id}`}
                   </Box>
                   <Box className="H-2" mr={"1rem"}>
-                    Date : 16-Nov-2022
+                  Date: {date}
                   </Box>
                 </Flex>
                 <Flex
@@ -277,9 +346,10 @@ const Print = ({ children, item }) => {
                     QT.
                   </Box>
                 </Flex>
-                {item.map((item) => {
+                {item.map((item,i) => {
                   return (
                     <Flex
+                    key={i}
                       border={"1px"}
                       // width="420px"
                       width="100%"
@@ -299,9 +369,9 @@ const Print = ({ children, item }) => {
                 <Center>
                   <Text>Order List</Text>
                 </Center>
-                <Center bg={"black"} color="white">
+                {/* <Center >
                   Invoice
-                </Center>
+                </Center> */}
               </Flex>
             </Flex>
             <Button onClick={handlePrint} colorScheme="blue">
