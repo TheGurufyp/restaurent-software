@@ -153,7 +153,7 @@ export default function Home() {
             justify="space-evenly"
             width={"48%"}
             border="1px"
-            // borderColor={"gray.300"}
+            borderColor={"gray.300"}
             borderRadius="8px"
             p={"1rem"}
           >

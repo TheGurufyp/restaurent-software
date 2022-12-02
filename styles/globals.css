@@ -14,9 +14,11 @@ body {
 }
 .chakra-modal__body{
   display: flex;
-  width: 20%;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  /* width: 20%; */
   /* flex: 1   */
-  /* border: 1px solid black; */
+  border: 1px solid black;
 }
 .H-1 {
   font-size: 13px;

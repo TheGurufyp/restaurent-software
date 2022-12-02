@@ -24,30 +24,25 @@ import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
 import Actions from "./Actions";
 import ItemCard from "./ItemCard";
 
-const Model = ({ children ,items,category}) => {
- 
+const Model = ({ children, items, category }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const [filteritems, setfilteritems] = useState([])
+  const [filteritems, setfilteritems] = useState([]);
 
-  
-  const filterbycategory=()=>{
- 
-    const filterresult= items.filter((item)=>{
-      return item.category===category;
-     })
-     setfilteritems(filterresult);
-   
-     
-  }
-
-
-
+  const filterbycategory = () => {
+    const filterresult = items.filter((item) => {
+      return item.category === category;
+    });
+    setfilteritems(filterresult);
+  };
 
   return (
     <>
       <Box>
         <Button
-          onClick={()=>{filterbycategory();onOpen();}}
+          onClick={() => {
+            filterbycategory();
+            onOpen();
+          }}
           as="span"
           w={"200px"}
           height={"200px"}
@@ -67,20 +62,10 @@ const Model = ({ children ,items,category}) => {
             <ModalCloseButton />
             <Flex>
               <ModalBody>
-
-              {
-                filteritems?.map((item,i)=>{
-                  return (
-                   <ItemCard key={i} item={item}/>
-                  )
-                })
-              }
-               
-                
-
+                {filteritems?.map((item, i) => {
+                  return <ItemCard key={i} item={item} />;
+                })}
               </ModalBody>
-
-             
             </Flex>
 
             <ModalFooter>
