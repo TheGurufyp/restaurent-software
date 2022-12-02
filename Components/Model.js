@@ -38,26 +38,36 @@ const Model = ({ children, items, category }) => {
   return (
     <>
       <Box>
-        <Button
+        <Flex
           onClick={() => {
             filterbycategory();
             onOpen();
           }}
-          as="span"
-          w={"200px"}
-          height={"200px"}
+          align="center"
+          justify={"center"}
+          textAlign="center"
+          w={"145px"}
+          height={"130px"}
           border={"1px"}
           borderRadius="10px"
           bg="blue.400"
           color={"white"}
+          my="5px"
+          fontSize={"1.5rem"}
+          // inlineSize="140px"
+          overflowWrap="break-all"
+          // wordBreak={"break-all"}
         >
-          {children}
-        </Button>
+      
+          {`${children}`}
+       
+
+        </Flex>
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay w={"100%"} />
           <ModalContent>
             <ModalHeader>
-              <Center>Pizza Category</Center>
+              <Center>{category}</Center>
             </ModalHeader>
             <ModalCloseButton />
             <Flex>

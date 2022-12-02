@@ -155,11 +155,12 @@ export default function Home() {
             border="1px"
             borderColor={"gray.300"}
             borderRadius="8px"
-            p={"1rem"}
+            py={"5px"}
           >
+          
             {categories?.map((c, i) => {
               return (
-                <Model key={c.name} items={items} category={c.name} my="1rem">
+                <Model key={c.name} items={items} category={c.name}>
                   {c.name}
                 </Model>
               );

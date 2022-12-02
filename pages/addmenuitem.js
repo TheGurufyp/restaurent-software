@@ -1,4 +1,4 @@
-import React, { useState,useRef } from 'react'
+import React, { useState,useRef, useEffect } from 'react'
 import axios from "axios"
 import { Box, Heading, Input,Text,Select, HStack, Button ,Flex ,useToast } from '@chakra-ui/react';
 import Sizes from '../Components/Sizes';
@@ -7,8 +7,8 @@ import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 
 function Addmenuitem() {
   const reset=useRef();
-  const toast = useToast()
-
+  const toast = useToast();
+  const [categories, setcategories] = useState([]);
 const initialValues = {
   name:"",
   category:"",
@@ -19,6 +19,40 @@ const initialValues = {
     },
   ],
 };
+
+
+const fetchcategories = async () => {
+  try {
+    const res = await axios.get("http://localhost:3000/api/getCategories");
+    if (res.data.success) {
+      // console.log( res.data.payload);
+      setcategories( res.data.payload );
+    } else {
+      // console.log( res.data.payload);
+      toast({
+        title: "Something went wronge",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
+    }
+  } catch (error) {
+    // console.log(error);
+    toast({
+      title: "Network error",
+      status: "error",
+      duration: 5000,
+      isClosable: true,
+    });
+  }
+};
+
+useEffect(() => {
+  
+fetchcategories();
+ 
+}, [])
+
 
 
   return (
@@ -73,11 +107,16 @@ const initialValues = {
 {({ values }) => (
         <Form>
           
-          <Field as={Input} id="name" name="name" placeholder="Enter Name" />
+          <Field as={Input} id="name" name="name" placeholder="Enter Name"  />
           <Field mt="20px" as={Select} name="category" placeholder='Select Category'>
-             <option value="Pizza">Pizza</option>
-             <option value="BBQ">BBQ</option>
-             <option value="Pasta">Pasta</option>
+            {
+              categories?.map((c,i)=>{
+                return (
+                  <option value={c.name}>{c.name}</option>
+                )
+              })
+            }
+            
            </Field>
 
 <Text fontSize={"1.2rem"} fontWeight={"semibold"} mt="20px">Select Sizes</Text>
@@ -101,6 +140,9 @@ const initialValues = {
              <option value="M">M</option>
              <option value="L">L</option>
              <option value="XL">XL</option>
+             <option value="Q">Q</option>
+             <option value="H">H</option>
+             <option value="F">F</option>
            </Field>
                         
                         <ErrorMessage
