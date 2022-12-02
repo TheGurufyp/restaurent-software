@@ -45,13 +45,13 @@ const Print = ({ children, item }) => {
       <Button onClick={onOpen} variant={"solid"} colorScheme="red">
         Place Order
       </Button>
-      <Modal onClose={onClose} isOpen={isOpen} size={"full"}>
+      <Modal onClose={onClose} isOpen={isOpen} size={"sm"}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>
             <Center
               bg={"blue.400"}
-              width="80%"
+              width="30%"
               marginInline={"auto"}
               borderRadius="8px"
             >
@@ -104,7 +104,7 @@ const Print = ({ children, item }) => {
                     Invoice # 1
                   </Box>
                   <Box className="H-2" mr={"1rem"}>
-                    Date : 16-Nov-2022
+                    {Date()}
                   </Box>
                 </Flex>
                 <Flex
@@ -185,6 +185,23 @@ const Print = ({ children, item }) => {
                   </Box>
                   <Box width={"20%"} className="H-4">
                     {totalprice}
+                  </Box>
+                </Flex>
+                <Flex
+                  border={"1px"}
+                  // width="420px"
+                  width="100%"
+                  justify={"space-around"}
+                >
+                  <Box width="30%">
+                    <Text></Text>
+                  </Box>
+                  <Box width={"5%"}></Box>
+                  <Box width={"25%"} fontWeight="semibold" className="H-2">
+                    Discount:
+                  </Box>
+                  <Box width={"20%"} className="H-4">
+                    {discount}
                   </Box>
                 </Flex>
                 <Flex
@@ -288,8 +305,7 @@ const Print = ({ children, item }) => {
               </Flex>
             </Flex>
             <Button onClick={handlePrint} colorScheme="blue">
-              {" "}
-              Print{" "}
+              Print
             </Button>
           </ModalBody>
           <ModalFooter>

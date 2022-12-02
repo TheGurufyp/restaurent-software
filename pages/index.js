@@ -38,10 +38,6 @@ export default function Home() {
   const [items, setitems] = useState([]);
   const [categories, setcategories] = useState();
 
- 
- 
-  
-
   const fetchcategories = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/getCategories");
@@ -157,22 +153,14 @@ export default function Home() {
             justify="space-evenly"
             width={"48%"}
             border="1px"
-            borderColor={"gray.300"}
+            // borderColor={"gray.300"}
             borderRadius="8px"
             p={"1rem"}
           >
             {categories?.map((c, i) => {
               return (
-                <Model key={c.name} items={items} category={c.name}  >
-                  <Flex
-                    // justify="center"
-                    // align={"center"}
-                    // direction="row"
-                    fontWeight={"semibold"}
-                    fontSize="2rem"
-                  >
-                    {c.name}
-                  </Flex>
+                <Model key={c.name} items={items} category={c.name} my="1rem">
+                  {c.name}
                 </Model>
               );
             })}
