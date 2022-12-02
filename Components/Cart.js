@@ -322,7 +322,11 @@ const cart = () => {
                           <Text></Text>
                         </Box>
                         <Box width={"5%"}></Box>
-                        <Box width={"20%"} fontWeight="semibold">
+                        <Box
+                          width={"20%"}
+                          fontWeight="semibold"
+                          className="H-5"
+                        >
                           Total Price :
                         </Box>
                         <Box width={"20%"}>8500</Box>
@@ -337,10 +341,14 @@ const cart = () => {
                           <Text></Text>
                         </Box>
                         <Box width={"5%"}></Box>
-                        <Box width={"50%"} fontWeight="semibold">
+                        <Box
+                          width={"35%"}
+                          fontWeight="semibold"
+                          className="H-5"
+                        >
                           Price After Discount :
                         </Box>
-                        <Box width={"25%"}>500</Box>
+                        <Box width={"22%"}>500</Box>
                       </Flex>
                       <Center>
                         <Text>Thanks For order</Text>
@@ -421,10 +429,12 @@ const cart = () => {
                         justify={"space-around"}
                       >
                         <Box width="70%">
-                          <Text>Sajji</Text>
+                          <Text className="H-4">Sajji</Text>
                         </Box>
 
-                        <Box width={"20%"}>1</Box>
+                        <Box className="H-4" width={"20%"}>
+                          1
+                        </Box>
                       </Flex>
 
                       <Center>

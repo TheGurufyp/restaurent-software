@@ -36,14 +36,27 @@ import axios from "axios";
 export default function Home() {
   const toast = useToast();
   const [items, setitems] = useState([]);
-  const [categories, setcategories] = useState();
+  const [categories, setcategories] = useState({ categories: [] });
+  const [find, setfind] = useState({ searchField: "" });
+
+  const search = (event) => {
+    // console.log(event.target.value);
+    // console.log(categories);
+    let searchField = event.target.value.toLocaleLowerCase();
+    setfind(() => {
+      return { searchField };
+    });
+
+    // setcategories(categ);
+    // console.log(categ);
+  };
 
   const fetchcategories = async () => {
     try {
       const res = await axios.get("http://localhost:3000/api/getCategories");
       if (res.data.success) {
         // console.log( res.data.payload);
-        setcategories(res.data.payload);
+        setcategories({ categories: res.data.payload });
       } else {
         // console.log( res.data.payload);
         toast({
@@ -102,6 +115,14 @@ export default function Home() {
     fetchcategories();
   }, []);
 
+  // console.log(find);
+  // console.log(categories);
+
+  let categ = categories.categories.filter((result) => {
+    return result.name.toLocaleLowerCase().includes(find.searchField);
+  });
+  // console.log(categ);
+
   return (
     <>
       <Box>
@@ -119,24 +140,8 @@ export default function Home() {
                 pointerEvents="none"
                 children={<Search2Icon color="black.300" />}
               />
-              <Input type="text" placeholder="Search Here" />
+              <Input type="text" placeholder="Search Here" onChange={search} />
             </InputGroup>
-          </Box>
-          <Box width={"25%"} mx="1rem">
-            <Select
-              border={"1px"}
-              borderRadius="8px"
-              borderColor={"orange.200"}
-              placeholder="Categories"
-              _placeholder={{ opacity: 1, color: "gray.500" }}
-            >
-              <option value="option1">All</option>
-              <option value="option2">Sandwich</option>
-              <option value="option3">Burger</option>
-              <option value="option4">Pizza</option>
-              <option value="option5">Drinks</option>
-              <option value="option6">Salad</option>
-            </Select>
           </Box>
         </Flex>
         <Flex
@@ -157,7 +162,7 @@ export default function Home() {
             borderRadius="8px"
             p={"1rem"}
           >
-            {categories?.map((c, i) => {
+            {categ?.map((c, i) => {
               return (
                 <Model key={c.name} items={items} category={c.name}>
                   <Flex
