@@ -38,9 +38,12 @@ function ItemCard({ item }) {
       price = selectedSize.price;
     }
     let totalprice = price * newQuantity;
-
+    let name=item.name;
+    if(size!='N'){
+     name= `${item.name} (${size})`
+    }
     const cartitem = {
-      name: `${item.name} (${size})`,
+      name: name,
       price: price,
       totalPrice: totalprice,
       quantity: newQuantity,

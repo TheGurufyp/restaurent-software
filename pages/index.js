@@ -3,17 +3,8 @@ import {
   Flex,
   Center,
   Heading,
-  Stack,
   Input,
-  Select,
   InputGroup,
-  Divider,
-  ButtonGroup,
-  Button,
-  Image,
-  Text,
-  Highlight,
-  useDisclosure,
   InputLeftElement,
 } from "@chakra-ui/react";
 import Cart from "../Components/Cart";
@@ -56,12 +47,7 @@ export default function Home() {
         </Flex>
         <Flex
           my={"2rem"}
-          // wrap="wrap"
-          // direction={"row"}
           justify="space-between"
-          // align={"center"}
-          // w="100%"
-          // border={"1px"}
         >
           <Flex
             wrap={"wrap"}
@@ -81,10 +67,7 @@ export default function Home() {
               );
             })}
           </Flex>
-          <Box
-            width={"50%"}
-            //  border="1px"
-          >
+          <Box width={"50%"} >
             <Cart />
           </Box>
         </Flex>

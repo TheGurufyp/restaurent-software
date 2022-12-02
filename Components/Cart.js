@@ -101,7 +101,7 @@ const cart = () => {
           >
             Food Detail
           </Box>
-          <Box
+          <Box  textAlign="center"
             w={"20%"}
             //    border={"1px"}
             fontWeight="semibold"

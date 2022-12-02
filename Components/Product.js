@@ -53,7 +53,7 @@ const Product = ({item,index}) => {
         my="1rem"
       >
         <Box w={"20%"}>{item?.name}</Box>
-        <Box w={"15%"} mr={"2rem"}>
+        <Box w={"15%"} mr={"2rem"}  ml="15px">
           <Actions newQuantity={newQuantity} setnewQuantity={setnewQuantity} />
         </Box>
         <Box w={"20%"}>{item?.price} </Box>
