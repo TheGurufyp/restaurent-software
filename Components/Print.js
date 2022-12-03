@@ -297,25 +297,24 @@ const Print = ({ children, item }) => {
                   </Box>
                 </Flex>
                 <Flex
-                  // border={"1px"}
                   // width="420px"
                   width="100%"
                   justify={"space-around"}
                 >
-                  <Box width="10%"></Box>
-                  {/* <Box width={"10%"}></Box> */}
+                  <Box width="20%"></Box>
+                  <Box width={"10%"}></Box>
                   <Box
                     // border={"1px"}
-                    width={"36%"}
-                    textAlign={"end"}
+                    width={"20%"}
+                    textAlign={"start "}
                     fontWeight="semibold"
                     className="H-2"
-                    ml={"4rem"}
-                    pr="0.2rem"
+                    ml={"2rem"}
+                    // pr="0.2rem"
                   >
                     Price After Discount :
                   </Box>
-                  <Box width={"20%"} className="H-4">
+                  <Box width={"21%"} className="H-4">
                     {priceAfterdiscount}
                   </Box>
                 </Flex>
