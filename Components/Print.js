@@ -302,16 +302,16 @@ const Print = ({ children, item }) => {
                   width="100%"
                   justify={"space-around"}
                 >
-                  <Box width="20%"></Box>
-                  <Box width={"10%"}></Box>
+                  {/* <Box width="20%"></Box>
+                  <Box width={"10%"}></Box> */}
                   <Box
-                    border={"1px"}
-                    width={"20%"}
+                    // border={"1px"}
+                    width={"30%"}
                     // textAlign={"end"}
                     fontWeight="semibold"
                     className="H-2"
                     // ml={"4rem"}
-                    pl={"0.5rem"}
+                    // pl={"0.5rem"}
                   >
                     Price After Discount :
                   </Box>
