@@ -9,7 +9,7 @@ body {
 .chakra-modal__content {
   background-color: black;
   /* border: 1px solid black; */
-  max-width: 60% !important;
+  max-width: 40% !important;
   /* height: 100%; */
 }
 .chakra-modal__body{
