@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { CartContext } from "../context/cart";
 import { useReactToPrint } from "react-to-print";
-import React, { useRef, useContext, useState ,useEffect} from "react";
+import React, { useRef, useContext, useState, useEffect } from "react";
 import {
   Heading,
   Center,
@@ -20,13 +20,13 @@ import {
   Button,
   Divider,
   Text,
-  HStack,useToast
+  HStack,
+  useToast,
 } from "@chakra-ui/react";
-import axios from "axios"
+import axios from "axios";
 import nextId from "react-id-generator";
 
 const Print = ({ children, item }) => {
- 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -40,30 +40,37 @@ const Print = ({ children, item }) => {
     priceAfterdiscount,
     discount,
     setdiscount,
-    cartlength,settotalprice,setpriceAfterdiscount
+    cartlength,
+    settotalprice,
+    setpriceAfterdiscount,
   } = useContext(CartContext);
 
-const [apiInProgress, setapiInProgress] = useState(false);
-const [orderStatus, setorderStatus] = useState("");
-const [order_id, setorder_id] = useState()
-const [date, setdate] = useState()
-const toast = useToast();
+  const [apiInProgress, setapiInProgress] = useState(false);
+  const [orderStatus, setorderStatus] = useState("");
+  const [order_id, setorder_id] = useState();
+  const [date, setdate] = useState();
+  const toast = useToast();
 
-
-
-  const PlaceOrder=async()=>{
-    if(cartlength<1)return;
+  const PlaceOrder = async () => {
+    if (cartlength < 1) return;
     setapiInProgress(true);
     try {
       const id = parseInt(nextId().slice(2));
       setorder_id(id);
-        console.log(typeof(id))
-      let d=new Date();
-      d=`${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}`;
+      console.log(typeof id);
+      let d = new Date();
+      d = `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`;
       setdate(d);
 
-      const res = await axios.post("http://localhost:3000/api/saveorder",{cart:item,order_id:id,discount,priceAfterdiscount,totalPrice:totalprice,orderDate:d});
-     
+      const res = await axios.post("http://localhost:3000/api/saveorder", {
+        cart: item,
+        order_id: id,
+        discount,
+        priceAfterdiscount,
+        totalPrice: totalprice,
+        orderDate: d,
+      });
+
       if (res.data.success) {
         setapiInProgress(false);
         toast({
@@ -71,13 +78,11 @@ const toast = useToast();
           status: "success",
           duration: 3000,
           isClosable: true,
-          position:"top"
+          position: "top",
         });
         setorderStatus("Order Placed Successfully");
         onOpen();
-       
-      } 
-      else {
+      } else {
         // console.log( res.data.payload);
         setapiInProgress(false);
         setorderStatus("Order not Saved");
@@ -87,7 +92,7 @@ const toast = useToast();
           status: "error",
           duration: 5000,
           isClosable: true,
-          position:"top"
+          position: "top",
         });
       }
     } catch (error) {
@@ -99,16 +104,21 @@ const toast = useToast();
         status: "error",
         duration: 5000,
         isClosable: true,
-        position:"top"
+        position: "top",
       });
     }
-   
-  }
+  };
 
   return (
     <>
-      <Button onClick={PlaceOrder} variant={"solid"} colorScheme="green" isLoading={apiInProgress}
-    loadingText='Loading' spinnerPlacement='end'>
+      <Button
+        onClick={PlaceOrder}
+        variant={"solid"}
+        colorScheme="green"
+        isLoading={apiInProgress}
+        loadingText="Loading"
+        spinnerPlacement="end"
+      >
         Place Order
       </Button>
       <Modal onClose={onClose} isOpen={isOpen} size={"sm"}>
@@ -139,7 +149,6 @@ const toast = useToast();
             alignItems="center"
             // border="1px"
           >
-          
             <Flex
               // border={"1px"}
               // flexDir="column"
@@ -150,13 +159,13 @@ const toast = useToast();
               marginInline="auto"
               ref={componentRef}
             >
-              
               <Flex
-                border={"1px"}
-                borderColor="gray.500"
+                // border={"1px"}
+                // borderColor="gray.500"
                 direction="column"
-                width={"70%"}
-                my="1rem"
+                width={"90%"}
+                mt="0.3rem"
+                mb={"2rem"}
                 // justify={"center"}
                 // align="center"
                 marginInline={"auto"}
@@ -179,7 +188,7 @@ const toast = useToast();
                   </Box>
                 </Flex>
                 <Flex
-                  border={"1px"}
+                  // border={"1px"}
                   // width="420px"
                   width="100%"
                   justify={"space-around"}
@@ -217,10 +226,11 @@ const toast = useToast();
                     Total Price
                   </Box>
                 </Flex>
-                {item.map((item,i) => {
+                {item.map((item, i) => {
                   return (
-                    <Flex key={i}
-                      border={"1px"}
+                    <Flex
+                      key={i}
+                      // border={"1px"}
                       // width="420px"
                       width="100%"
                       justify={"space-around"}
@@ -242,7 +252,7 @@ const toast = useToast();
                 })}
 
                 <Flex
-                  border={"1px"}
+                  // border={"1px"}
                   // width="420px"
                   width="100%"
                   justify={"space-around"}
@@ -251,7 +261,7 @@ const toast = useToast();
                     <Text></Text>
                   </Box>
                   <Box width={"5%"}></Box>
-                  <Box width={"25%"} fontWeight="semibold" className="H-2">
+                  <Box width={"15%"} fontWeight="semibold" className="H-2">
                     Total Price :
                   </Box>
                   <Box width={"20%"} className="H-4">
@@ -259,7 +269,7 @@ const toast = useToast();
                   </Box>
                 </Flex>
                 <Flex
-                  border={"1px"}
+                  // border={"1px"}
                   // width="420px"
                   width="100%"
                   justify={"space-around"}
@@ -268,41 +278,46 @@ const toast = useToast();
                     <Text></Text>
                   </Box>
                   <Box width={"5%"}></Box>
-                  <Box width={"25%"} fontWeight="semibold" className="H-2">
-                    Discount:
+                  <Box width={"15%"} fontWeight="semibold" className="H-2">
+                    Discount :
                   </Box>
                   <Box width={"20%"} className="H-4">
                     {discount}
                   </Box>
                 </Flex>
                 <Flex
-                  border={"1px"}
+                  // border={"1px"}
                   // width="420px"
                   width="100%"
                   justify={"space-around"}
                 >
-                  <Box width="30%">
+                  <Box width="45%">
                     <Text></Text>
                   </Box>
-                  <Box width={"5%"}></Box>
-                  <Box width={"45%"} fontWeight="semibold" className="H-2">
+                  {/* <Box width={"1%"}></Box> */}
+                  <Box
+                    // border={"1px"}
+                    width={"35%"}
+                    fontWeight="semibold"
+                    className="H-2"
+                  >
                     Price After Discount :
                   </Box>
                   <Box width={"25%"} className="H-4">
                     {priceAfterdiscount}
                   </Box>
                 </Flex>
-                <Center>
+                <Center border={"1px"}>
                   <Text>Thanks For order</Text>
                 </Center>
               </Flex>
-
+              <Divider my={"2rem"}></Divider>
               <Flex
                 my="2rem"
-                border={"1px"}
-                borderColor="gray.500"
+                // border={"1px"}
+                // borderColor="gray.500"
                 direction="column"
-                width={"70%"}
+                width={"90%"}
                 // justify={"center"}
                 // align="center"
                 marginInline={"auto"}
@@ -318,14 +333,14 @@ const toast = useToast();
                   w="100%"
                 >
                   <Box className="H-2" ml={"1rem"}>
-                  {`Order # ${order_id}`}
+                    {`Order # ${order_id}`}
                   </Box>
                   <Box className="H-2" mr={"1rem"}>
-                  Date: {date}
+                    Date: {date}
                   </Box>
                 </Flex>
                 <Flex
-                  border={"1px"}
+                  // border={"1px"}
                   // width="420px"
                   width="100%"
                   justify={"space-around"}
@@ -348,11 +363,11 @@ const toast = useToast();
                     QT.
                   </Box>
                 </Flex>
-                {item.map((item,i) => {
+                {item.map((item, i) => {
                   return (
                     <Flex
-                    key={i}
-                      border={"1px"}
+                      key={i}
+                      // border={"1px"}
                       // width="420px"
                       width="100%"
                       justify={"space-around"}
@@ -368,7 +383,7 @@ const toast = useToast();
                   );
                 })}
 
-                <Center>
+                <Center border={"1px"}>
                   <Text>Order List</Text>
                 </Center>
                 {/* <Center >
