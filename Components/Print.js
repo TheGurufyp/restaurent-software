@@ -259,12 +259,10 @@ const Print = ({ children, item }) => {
                   // border={"1px"}
                   // width="420px"
                   width="100%"
-                  justify={"space-around"}
+                  justify={"end"}
                 >
-                  <Box width="20%"></Box>
-                  <Box width={"10%"}></Box>
                   <Box
-                    width={"20%"}
+                    // width={"20%"}
                     // border="1px"
                     fontWeight="semibold"
                     className="H-2"
@@ -272,7 +270,7 @@ const Print = ({ children, item }) => {
                   >
                     Total Price :
                   </Box>
-                  <Box width={"20%"} className="H-4">
+                  <Box mx={"2rem"} width={"20%"} className="H-4">
                     {totalprice}
                   </Box>
                 </Flex>
@@ -280,19 +278,17 @@ const Print = ({ children, item }) => {
                   // border={"1px"}
                   // width="420px"
                   width="100%"
-                  justify={"space-around"}
+                  justify={"end"}
                 >
-                  <Box width="20%"></Box>
-                  <Box width={"10%"}></Box>
                   <Box
-                    width={"20%"}
+                    // width={"20%"}
                     textAlign={"end"}
                     fontWeight="semibold"
                     className="H-2"
                   >
                     Discount %
                   </Box>
-                  <Box width={"20%"} className="H-4">
+                  <Box mx={"2rem"} width={"20%"} className="H-4">
                     {discount}
                   </Box>
                 </Flex>
