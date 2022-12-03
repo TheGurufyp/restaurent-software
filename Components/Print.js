@@ -152,7 +152,7 @@ const Print = ({ children, item }) => {
             <Flex
               // border={"1px"}
               // flexDir="column"
-              width={"90%"}
+              width={"100%"}
               justify="space-between "
               align="center"
               direction={"column"}
@@ -257,11 +257,15 @@ const Print = ({ children, item }) => {
                   width="100%"
                   justify={"space-around"}
                 >
-                  <Box width="30%">
-                    <Text></Text>
-                  </Box>
-                  <Box width={"5%"}></Box>
-                  <Box width={"15%"} fontWeight="semibold" className="H-2">
+                  <Box width="20%"></Box>
+                  <Box width={"10%"}></Box>
+                  <Box
+                    width={"20%"}
+                    // border="1px"
+                    fontWeight="semibold"
+                    className="H-2"
+                    textAlign={"end"}
+                  >
                     Total Price :
                   </Box>
                   <Box width={"20%"} className="H-4">
@@ -274,11 +278,14 @@ const Print = ({ children, item }) => {
                   width="100%"
                   justify={"space-around"}
                 >
-                  <Box width="30%">
-                    <Text></Text>
-                  </Box>
-                  <Box width={"5%"}></Box>
-                  <Box width={"15%"} fontWeight="semibold" className="H-2">
+                  <Box width="20%"></Box>
+                  <Box width={"10%"}></Box>
+                  <Box
+                    width={"20%"}
+                    textAlign={"end"}
+                    fontWeight="semibold"
+                    className="H-2"
+                  >
                     Discount :
                   </Box>
                   <Box width={"20%"} className="H-4">
@@ -291,19 +298,18 @@ const Print = ({ children, item }) => {
                   width="100%"
                   justify={"space-around"}
                 >
-                  <Box width="45%">
-                    <Text></Text>
-                  </Box>
-                  {/* <Box width={"1%"}></Box> */}
+                  <Box width="20%"></Box>
+                  <Box width={"10%"}></Box>
                   <Box
                     // border={"1px"}
-                    width={"35%"}
+                    width={"20%"}
+                    textAlign={"end"}
                     fontWeight="semibold"
                     className="H-2"
                   >
                     Price After Discount :
                   </Box>
-                  <Box width={"25%"} className="H-4">
+                  <Box width={"20%"} className="H-4">
                     {priceAfterdiscount}
                   </Box>
                 </Flex>
