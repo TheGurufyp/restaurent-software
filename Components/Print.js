@@ -297,7 +297,7 @@ const Print = ({ children, item }) => {
                   </Box>
                 </Flex>
                 <Flex
-                  border={"1px"}
+                  // border={"1px"}
                   // width="420px"
                   width="100%"
                   justify={"end"}
