@@ -196,7 +196,7 @@ const Print = ({ children, item }) => {
                   <Box
                     // border={"1px"}
                     fontWeight="semibold"
-                    width="30%"
+                    width="40%"
                     className="H-3"
                   >
                     Items
@@ -235,7 +235,7 @@ const Print = ({ children, item }) => {
                       width="100%"
                       justify={"space-around"}
                     >
-                      <Box width="30%">
+                      <Box width="40%">
                         <Text className="H-4">{item.name}</Text>
                       </Box>
                       <Box width={"10%"} className="H-4">
@@ -250,7 +250,11 @@ const Print = ({ children, item }) => {
                     </Flex>
                   );
                 })}
-
+                <Divider
+                  my={"0.4rem"}
+                  width="90%"
+                  marginInline={"auto"}
+                ></Divider>
                 <Flex
                   // border={"1px"}
                   // width="420px"
@@ -286,7 +290,7 @@ const Print = ({ children, item }) => {
                     fontWeight="semibold"
                     className="H-2"
                   >
-                    Discount :
+                    Discount %
                   </Box>
                   <Box width={"20%"} className="H-4">
                     {discount}
@@ -298,14 +302,15 @@ const Print = ({ children, item }) => {
                   width="100%"
                   justify={"space-around"}
                 >
-                  <Box width="20%"></Box>
-                  <Box width={"10%"}></Box>
+                  <Box width="10%"></Box>
+                  {/* <Box width={"10%"}></Box> */}
                   <Box
                     // border={"1px"}
-                    width={"20%"}
+                    width={"35%"}
                     textAlign={"end"}
                     fontWeight="semibold"
                     className="H-2"
+                    ml={"4rem"}
                   >
                     Price After Discount :
                   </Box>
