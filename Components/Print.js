@@ -163,7 +163,7 @@ const Print = ({ children, item }) => {
                 // border={"1px"}
                 // borderColor="gray.500"
                 direction="column"
-                width={"90%"}
+                width={"100%"}
                 mt="0.3rem"
                 mb={"2rem"}
                 // justify={"center"}
@@ -317,7 +317,7 @@ const Print = ({ children, item }) => {
                 // border={"1px"}
                 // borderColor="gray.500"
                 direction="column"
-                width={"90%"}
+                width={"100%"}
                 // justify={"center"}
                 // align="center"
                 marginInline={"auto"}
