@@ -49,6 +49,13 @@ const cart = () => {
     cartlength,
   } = useContext(CartContext);
 
+  const resetCart=()=>{
+
+    setcart([]);
+    document.getElementById("discount").value='';
+    setdiscount(0);
+  }
+
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
@@ -79,6 +86,7 @@ const cart = () => {
           >
             Cart
           </Box>
+          <Button onClick={resetCart} size={"sm"} colorScheme={"red"}>Reset</Button>
           <Box
             // border={"1px"}
             p="10px"
@@ -88,7 +96,7 @@ const cart = () => {
             {cartlength} Items
           </Box>
         </Flex>
-        <Divider my={"1rem"} />
+         <Divider my={"1rem"} />
         <Flex
           //  border={"1px"}
           justify="space-between"
@@ -142,7 +150,7 @@ const cart = () => {
             justify={"right"}
             // marginInline={"auto"}
             direction="column"
-          >
+           >
             <Flex>
               <Box fontWeight={"semibold"}>Total Price : </Box>
               <Box mx={"1rem"}>{totalprice}</Box>
@@ -162,7 +170,7 @@ const cart = () => {
                 ></Input>
                 <Button
                   onClick={() =>
-                    setdiscount(document.getElementById("discount").value)
+                    setdiscount(parseInt(document.getElementById("discount").value))
                   }
                   size={"sm"}
                   colorScheme="blue"

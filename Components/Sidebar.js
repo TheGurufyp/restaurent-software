@@ -54,6 +54,13 @@ let sideStyles={
 </Link>
 <Divider w="80%" mx="auto" my="10px" />
 
+<Link href={"/orders"}>
+<Text cursor={"pointer"} transition={"all 0.2s"} _hover={{
+    bg:"blue.600"
+}} py="10px" w="70%" mx={"auto"}> Orders</Text>
+</Link>
+<Divider w="80%" mx="auto" my="10px" />
+
 
 
 

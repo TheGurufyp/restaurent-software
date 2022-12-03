@@ -8,11 +8,15 @@ const handler=async (req,res)=>{
 
     try {
         
-        const {cart,order_id}=req.body;
+        const {cart,order_id,discount,priceAfterdiscount,totalPrice,orderDate}=req.body;
         // console.log(cart)
         const newOrder=new Order({
          order:cart,
-         order_id:order_id
+         order_id:order_id,
+         discount,
+         priceAfterdiscount,
+         totalPrice,
+         orderDate
         })
      
        await newOrder.save() ;

@@ -40,7 +40,7 @@ const Print = ({ children, item }) => {
     priceAfterdiscount,
     discount,
     setdiscount,
-    cartlength,
+    cartlength,settotalprice,setpriceAfterdiscount
   } = useContext(CartContext);
 
 const [apiInProgress, setapiInProgress] = useState(false);
@@ -49,18 +49,20 @@ const [order_id, setorder_id] = useState()
 const [date, setdate] = useState()
 const toast = useToast();
 
+
+
   const PlaceOrder=async()=>{
     if(cartlength<1)return;
     setapiInProgress(true);
     try {
-      const id = nextId().slice(2);
+      const id = parseInt(nextId().slice(2));
       setorder_id(id);
-
+        console.log(typeof(id))
       let d=new Date();
       d=`${d.getDate()}-${d.getMonth()+1}-${d.getFullYear()}`;
       setdate(d);
 
-      const res = await axios.post("http://localhost:3000/api/saveorder",{cart:item,order_id:id});
+      const res = await axios.post("http://localhost:3000/api/saveorder",{cart:item,order_id:id,discount,priceAfterdiscount,totalPrice:totalprice,orderDate:d});
      
       if (res.data.success) {
         setapiInProgress(false);
@@ -73,7 +75,7 @@ const toast = useToast();
         });
         setorderStatus("Order Placed Successfully");
         onOpen();
-
+       
       } 
       else {
         // console.log( res.data.payload);
@@ -105,7 +107,7 @@ const toast = useToast();
 
   return (
     <>
-      <Button onClick={PlaceOrder} variant={"solid"} colorScheme="red" isLoading={apiInProgress}
+      <Button onClick={PlaceOrder} variant={"solid"} colorScheme="green" isLoading={apiInProgress}
     loadingText='Loading' spinnerPlacement='end'>
         Place Order
       </Button>
