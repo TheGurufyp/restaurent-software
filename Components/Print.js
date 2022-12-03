@@ -306,11 +306,12 @@ const Print = ({ children, item }) => {
                   {/* <Box width={"10%"}></Box> */}
                   <Box
                     // border={"1px"}
-                    width={"35%"}
+                    width={"36%"}
                     textAlign={"end"}
                     fontWeight="semibold"
                     className="H-2"
                     ml={"4rem"}
+                    pr="0.2rem"
                   >
                     Price After Discount :
                   </Box>
