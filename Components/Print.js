@@ -152,7 +152,7 @@ const Print = ({ children, item }) => {
             <Flex
               // border={"1px"}
               // flexDir="column"
-              width={"70%"}
+              width={"90%"}
               justify="space-between "
               align="center"
               direction={"column"}
