@@ -59,8 +59,8 @@ const Product = ({ item, index }) => {
         <Box w={"15%"} mr={"2rem"} ml="15px">
           <Actions newQuantity={newQuantity} setnewQuantity={setnewQuantity} />
         </Box>
-        <Box w={"20%"}>{item?.price} </Box>
-        <Box w={"20%"}>{item?.totalPrice}</Box>
+        <Box w={"20%"} fontSize="1.1rem">{item?.price} </Box>
+        <Box w={"20%"} fontSize="1.1rem">{item?.totalPrice}</Box>
         <Box w={"5%"}>
           <CloseButton size="md" onClick={removefromcart} />
         </Box>

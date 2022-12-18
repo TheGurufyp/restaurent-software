@@ -121,7 +121,7 @@ const Print = ({ children, item }) => {
       >
         Place Order
       </Button>
-      <Modal onClose={onClose} isOpen={isOpen} size={"sm"}>
+      <Modal onClose={onClose} isOpen={isOpen} size={"sm"} closeOnOverlayClick={false}>
         <ModalOverlay />
         <ModalContent>
           <ModalHeader>
@@ -171,7 +171,7 @@ const Print = ({ children, item }) => {
                 marginInline={"auto"}
                 // height="380px"
               >
-                <Center border={"1px"} className="H-1">
+                <Center  className="H-1">
                   Wakhraa Sawaad
                 </Center>
                 <Flex
@@ -324,7 +324,7 @@ const Print = ({ children, item }) => {
                     {priceAfterdiscount}
                   </Box>
                 </Flex>
-                <Center border={"1px"}>
+                <Center mt="10px" border={"1px dotted"} >
                   <Text>Thanks For order</Text>
                 </Center>
               </Flex>
@@ -340,7 +340,7 @@ const Print = ({ children, item }) => {
                 marginInline={"auto"}
                 // height="380px"
               >
-                <Center border={"1px"} className="H-1">
+                <Center  className="H-1">
                   Wakhraa Sawaad
                 </Center>
                 <Flex
@@ -358,6 +358,7 @@ const Print = ({ children, item }) => {
                 </Flex>
                 <Flex
                   // border={"1px"}
+                  mb="5px"
                   // width="420px"
                   width="100%"
                   justify={"space-around"}
@@ -367,6 +368,7 @@ const Print = ({ children, item }) => {
                     fontWeight="semibold"
                     width="70%"
                     className="H-3"
+                    fontSize={"0.8rem"}
                   >
                     Items
                   </Box>
@@ -376,6 +378,7 @@ const Print = ({ children, item }) => {
                     fontWeight="semibold"
                     width={"30%"}
                     className="H-3"
+                    fontSize={"0.8rem"}
                   >
                     QT.
                   </Box>
@@ -386,16 +389,17 @@ const Print = ({ children, item }) => {
                       key={i}
                       // border={"1px"}
                       // width="420px"
+                      
                       width="100%"
                       flexDirection={"column"}
                       justify={"space-around"}
                     >
                       <Flex>
-                        <Box width="70%">
-                          <Text className="H-4">{item.name}</Text>
+                        <Box width="70%" >
+                          <Text fontSize={"0.8rem"} className="H-4">{item.name}</Text>
                         </Box>
 
-                        <Box width={"1%"} className="H-4">
+                        <Box width={"28%"} className="H-4" fontSize={"0.9rem"}>
                           {item.quantity}
                         </Box>
                       </Flex>

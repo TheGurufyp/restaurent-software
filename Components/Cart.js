@@ -151,9 +151,9 @@ const cart = () => {
             // marginInline={"auto"}
             direction="column"
            >
-            <Flex>
+            <Flex align={"center"}>
               <Box fontWeight={"semibold"}>Total Price : </Box>
-              <Box mx={"1rem"}>{totalprice}</Box>
+              <Box mx={"1rem"} fontSize="1.3rem">{totalprice}</Box>
             </Flex>
             <Divider my={"0.2rem"} width="40%"></Divider>
             <Flex my={"0.7rem"} justify={"left"} align="center">
@@ -180,9 +180,9 @@ const cart = () => {
               </HStack>
             </Flex>
             <Divider my={"0.2rem"} width="55%"></Divider>
-            <Flex>
+            <Flex align={"center"}>
               <Box fontWeight={"semibold"}>Total Price After Discount : </Box>
-              <Box mx={"1rem"}>{priceAfterdiscount}</Box>
+              <Box mx={"1rem"} fontSize="1.3rem">{priceAfterdiscount}</Box>
             </Flex>
           </Flex>
           <Flex justify={"right"} mr="2rem">
