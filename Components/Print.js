@@ -228,7 +228,7 @@ const Print = ({ children, item }) => {
                 </Flex>
                 <Flex
                   // key={i}
-                  border={"1px"}
+                  // border={"1px"}
                   // width="420px"
                   flexDirection="column"
                   width="100%"
@@ -252,7 +252,11 @@ const Print = ({ children, item }) => {
                             {item.totalPrice}
                           </Box>
                         </Flex>
-                        <Box>-----------------------------------------</Box>
+                        <Box
+                          my={"0.2rem"}
+                          width={"100%"}
+                          borderBottom="1px dotted"
+                        ></Box>
                       </Box>
                     );
                   })}
@@ -395,7 +399,11 @@ const Print = ({ children, item }) => {
                           {item.quantity}
                         </Box>
                       </Flex>
-                      <Box>------------------------------------------</Box>
+                      <Box
+                        my={"0.2rem"}
+                        width={"100%"}
+                        borderBottom="1px dotted"
+                      ></Box>
                     </Flex>
                   );
                 })}
