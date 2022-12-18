@@ -226,30 +226,37 @@ const Print = ({ children, item }) => {
                     Total Price
                   </Box>
                 </Flex>
-                {item.map((item, i) => {
-                  return (
-                    <Flex
-                      key={i}
-                      // border={"1px"}
-                      // width="420px"
-                      width="100%"
-                      justify={"space-around"}
-                    >
-                      <Box width="40%">
-                        <Text className="H-4">{item.name}</Text>
+                <Flex
+                  // key={i}
+                  border={"1px"}
+                  // width="420px"
+                  flexDirection="column"
+                  width="100%"
+                  mt={"0.7rem"}
+                  // justify={"space-around"}
+                >
+                  {item.map((item, i) => {
+                    return (
+                      <Box>
+                        <Flex justify={"space-between"}>
+                          <Box width="40%">
+                            <Text className="H-4">{item.name}</Text>
+                          </Box>
+                          <Box width={"10%"} className="H-4">
+                            {item.price}
+                          </Box>
+                          <Box width={"10%"} className="H-4">
+                            {item.quantity}
+                          </Box>
+                          <Box width={"20%"} className="H-4">
+                            {item.totalPrice}
+                          </Box>
+                        </Flex>
+                        <Box>-----------------------------------------</Box>
                       </Box>
-                      <Box width={"10%"} className="H-4">
-                        {item.price}
-                      </Box>
-                      <Box width={"10%"} className="H-4">
-                        {item.quantity}
-                      </Box>
-                      <Box width={"20%"} className="H-4">
-                        {item.totalPrice}
-                      </Box>
-                    </Flex>
-                  );
-                })}
+                    );
+                  })}
+                </Flex>
                 <Divider
                   my={"0.4rem"}
                   width="90%"
@@ -363,7 +370,7 @@ const Print = ({ children, item }) => {
                   <Box
                     // border={"1px"}
                     fontWeight="semibold"
-                    width={"20%"}
+                    width={"30%"}
                     className="H-3"
                   >
                     QT.
@@ -376,15 +383,19 @@ const Print = ({ children, item }) => {
                       // border={"1px"}
                       // width="420px"
                       width="100%"
+                      flexDirection={"column"}
                       justify={"space-around"}
                     >
-                      <Box width="70%">
-                        <Text className="H-4">{item.name}</Text>
-                      </Box>
+                      <Flex>
+                        <Box width="70%">
+                          <Text className="H-4">{item.name}</Text>
+                        </Box>
 
-                      <Box width={"20%"} className="H-4">
-                        {item.quantity}
-                      </Box>
+                        <Box width={"1%"} className="H-4">
+                          {item.quantity}
+                        </Box>
+                      </Flex>
+                      <Box>------------------------------------------</Box>
                     </Flex>
                   );
                 })}
